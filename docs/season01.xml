@@ -7,19 +7,19 @@
     <language>en-us</language>
 
     <image>
-      <url>https://yourdomain.com/images/cover.jpg</url>
-      <title>Your Show Name</title>
-      <link>https://yourdomain.com</link>
+      <url>https://podcast.xandermar.com/images/cover.jpg</url>
+      <title>Gibson and Friends</title>
+      <link>https://podcast.xandermar.com</link>
     </image>
 
-    <itunes:image href="https://yourdomain.com/images/cover.jpg"/>
+    <itunes:image href="https://podcast.xandermar.com/images/cover.jpg"/>
 
     <item>
       <title>Episode 1</title>
       <description>First episode.</description>
       <pubDate>Tue, 11 Feb 2026 10:00:00 GMT</pubDate>
       <enclosure 
-        url="https://yourusername.github.io/audio/episode-001.mp3" 
+        url="https://podcast.xandermar.com/audio/episode01.m4a" 
         length="12345678" 
         type="audio/mpeg"/>
       <guid>episode-001</guid>
