@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
   <channel>
-    <title>Gibson and Friends</title>
+    <title>The Gibson and Friends Podcast</title>
     <link>https://podcast.xandermar.com</link>
-    <description>Your podcast description</description>
+    <description>A conversational podcast covering current events, trending topics, opinions, and reviews.</description>
     <language>en-us</language>
 
     <image>
       <url>https://podcast.xandermar.com/images/cover.jpg</url>
-      <title>Gibson and Friends</title>
+      <title>The Gibson and Friends Podcast</title>
       <link>https://podcast.xandermar.com</link>
     </image>
 
-    <itunes:image href="https://podcast.xandermar.com/images/cover.jpg"/>
+    <itunes:image href="https://podcast.xandermar.com/images/cover.jpg" />
 
     <item>
-      <title>Episode 1</title>
-      <description>First episode.</description>
+      <title>Episode 1: Nancy Guthrie, Olympics, Jesse Jackson and Robert Duvall</title>
+      <description>We kick things off with Nancy Guthrie, the Olympics, Jesse Jackson, and Robert Duvall—plus current events, trending topics, opinions, and reviews.</description>
       <pubDate>Tue, 11 Feb 2026 10:00:00 GMT</pubDate>
-      <enclosure 
-        url="https://podcast.xandermar.com/audio/episode01.m4a" 
-        length="12345678" 
-        type="audio/mpeg"/>
+      <enclosure
+        url="https://podcast.xandermar.com/audio/episode01.m4a"
+        length="15352"
+        type="audio/mpeg" />
       <guid>episode-001</guid>
     </item>
 
