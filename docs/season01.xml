@@ -7,12 +7,12 @@
     <language>en-us</language>
 
     <image>
-      <url>https://podcast.xandermar.com/images/cover.png</url>
+      <url>https://podcast.xandermar.com/images/cover.jpg</url>
       <title>Gibson and Friends</title>
       <link>https://podcast.xandermar.com</link>
     </image>
 
-    <itunes:image href="https://podcast.xandermar.com/images/cover.png"/>
+    <itunes:image href="https://podcast.xandermar.com/images/cover.jpg"/>
 
     <item>
       <title>Episode 1</title>
