@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>Your Show Name</title>
-    <link>https://yourusername.github.io</link>
+    <title>Gibson and Friends</title>
+    <link>https://podcast.xandermar.com</link>
     <description>Your podcast description</description>
     <language>en-us</language>
+
+    <image>
+      <url>https://yourdomain.com/images/cover.jpg</url>
+      <title>Your Show Name</title>
+      <link>https://yourdomain.com</link>
+    </image>
+
+    <itunes:image href="https://yourdomain.com/images/cover.jpg"/>
 
     <item>
       <title>Episode 1</title>
