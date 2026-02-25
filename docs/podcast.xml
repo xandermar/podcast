@@ -6,7 +6,7 @@
     <description>A conversational podcast covering current events, trending topics, opinions, and reviews.</description>
     <language>en-us</language>
     <copyright>© 2026 The 50 Shades of Beer Podcast</copyright>
-    <lastBuildDate>Wed, 25 Feb 2026 21:13:23 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 25 Feb 2026 21:22:37 GMT</lastBuildDate>
     <generator>XDM Podcast AI</generator>
     <itunes:type>episodic</itunes:type>
     <itunes:author>The 50 Shades of Beer Podcast</itunes:author>
@@ -53,30 +53,6 @@
       <podcast:chapters url="https://www.50shades.net/chapters/s1e1.json" type="application/json"/>
       <category>Technology</category>
       <category>Travel</category>
-    </item>
-    <item>
-      <title>Building an AI Recruiter, Drupal 11 Automation, and Life on the Water</title>
-      <link>https://www.50shades.net/episodes/building-an-ai-recruiter-drupal-11-automation-and-life-on-the-water.html</link>
-      <guid isPermaLink="true">https://www.50shades.net/episodes/building-an-ai-recruiter-drupal-11-automation-and-life-on-the-water.html</guid>
-      <pubDate>Wed, 25 Feb 2026 18:10:44 GMT</pubDate>
-      <description>Dan walks through building an AI-powered recruiter automation system, advanced Drupal 11 workflow techniques, and lessons learned from weekend boating in coastal Delaware.</description>
-      <content:encoded><![CDATA[
-        <p>Full HTML show notes with links, images, timestamps.</p>
-      ]]></content:encoded>
-      <enclosure url="https://media.xandist.site/s1e2/audio.mp3" length="0" type="audio/mpeg"/>
-      <itunes:title>Building an AI Recruiter, Drupal 11 Automation, and Life on the Water</itunes:title>
-      <itunes:subtitle>AI automation, Drupal architecture, and coastal lifestyle insights</itunes:subtitle>
-      <itunes:summary>Dan walks through building an AI-powered recruiter automation system, advanced Drupal 11 workflow techniques, and lessons learned from weekend boating in coastal Delaware.</itunes:summary>
-      <itunes:author>The 50 Shades of Beer Podcast</itunes:author>
-      <itunes:duration>00:00:00</itunes:duration>
-      <itunes:episode>2</itunes:episode>
-      <itunes:season>1</itunes:season>
-      <itunes:episodeType>full</itunes:episodeType>
-      <itunes:explicit>no</itunes:explicit>
-      <itunes:image href="https://www.50shades.net/images/cover.jpg"/>
-      <podcast:chapters url="https://www.50shades.net/chapters/s1e2.json" type="application/json"/>
-      <category>Science and Technology</category>
-      <category>Arts and Culture</category>
     </item>
   </channel>
 </rss>
