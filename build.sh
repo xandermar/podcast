@@ -5,7 +5,7 @@
 # Purpose
 # - Generates a complete podcast RSS feed XML using a global template + per-episode templates.
 # - Generates per-episode Podcasting 2.0 chapters JSON files.
-# - Creates placeholder episode HTML pages ("Coming soon!") for episode links.
+# - Creates episode HTML pages under docs/episodes/.
 #
 # Key behaviors
 # - When executed (./build.sh): writes files under docs/ (site output) and prints nothing unless a later step prints.
@@ -22,7 +22,7 @@
 # Outputs (executed mode)
 # - docs/podcast.xml: final formatted RSS feed.
 # - docs/chapters/*.json: per-episode chapters files (path derived from ITEM_PODCAST_CHAPTERS_URL).
-# - docs/episodes/*.html: placeholder episode pages when the generated episode link does not already exist.
+# - docs/episodes/*.html: per-episode detail pages.
 #
 # Notes
 # - This script intentionally avoids "set -e" so it can be embedded into larger pipelines without unexpected exits.
@@ -92,12 +92,7 @@ require 'fileutils'
 require 'uri'
 require 'json'
 
-# ------------------------------
-# Helpers: escaping and parsing
-# ------------------------------
-
 def xml_escape(value)
-	# Minimal XML escaping for text nodes/attribute values.
 	value.to_s
 			 .gsub('&', '&amp;')
 			 .gsub('<', '&lt;')
@@ -106,28 +101,31 @@ def xml_escape(value)
 			 .gsub("'", '&apos;')
 end
 
+def html_escape(value)
+	value.to_s
+			 .gsub('&', '&amp;')
+			 .gsub('<', '&lt;')
+			 .gsub('>', '&gt;')
+			 .gsub('"', '&quot;')
+			 .gsub("'", '&#39;')
+end
+
 def normalize_categories(value)
-	# Accept categories in a few formats:
-	# - YAML array: ["Technology", "Travel"]
-	# - comma-separated string: "Technology, Travel"
-	# - newline-separated string
 	case value
 	when Array
 		value.map(&:to_s)
 	when String
-		value.split(/[,\n]/)
+		value.split(/[\,\n]/)
 	else
 		[]
 	end.map { |c| c.strip }.reject(&:empty?)
 end
 
 def dig_hash(hash, *keys)
-	# Safe hash digging for nested YAML structures.
 	keys.reduce(hash) { |acc, key| acc.is_a?(Hash) ? acc[key] : nil }
 end
 
 def machine_name(value)
-	# Slugify into machine-readable text for URLs/filenames.
 	value.to_s
 		 .downcase
 		 .gsub(/[^a-z0-9]+/, '-')
@@ -135,12 +133,10 @@ def machine_name(value)
 end
 
 def rss_date_gmt(time)
-	# RSS pubDate/lastBuildDate formatting.
 	time.utc.strftime('%a, %d %b %Y %H:%M:%S GMT')
 end
 
 def format_hhmmss(total_seconds)
-	# iTunes duration format: HH:MM:SS
 	total_seconds = total_seconds.to_i
 	hours = total_seconds / 3600
 	minutes = (total_seconds % 3600) / 60
@@ -149,69 +145,61 @@ def format_hhmmss(total_seconds)
 end
 
 def command_exists?(cmd)
-	# Used for optional tooling (ffprobe).
 	system("command -v #{cmd} >/dev/null 2>&1")
 end
 
 def execution_mode?
-	# When sourced, this is "0" and we avoid writing files.
-	ENV['BUILD_WRITE_FILES'].to_s == '1'
+	ENV.fetch('BUILD_WRITE_FILES', '0').to_s == '1'
 end
 
-def ensure_coming_soon_html_exists(item_link, item_slug)
-	# Creates docs/episodes/<slug>.html if it doesn't exist.
-	# This allows the RSS <link> to always resolve to a real page.
-	return unless execution_mode?
-	return if item_link.nil? || item_link.to_s.strip.empty?
-	return if item_slug.nil? || item_slug.to_s.strip.empty?
+def human_date_for_audio(audio_path)
+	return nil unless File.exist?(audio_path)
 
-	path = nil
-	begin
-		uri = URI.parse(item_link.to_s)
-		path = uri.path
-	rescue URI::InvalidURIError
-		path = item_link.to_s
+	time = begin
+		File.birthtime(audio_path)
+	rescue StandardError
+		begin
+			File.mtime(audio_path)
+		rescue StandardError
+			nil
+		end
 	end
 
-	path = '/' + path unless path.start_with?('/')
-	path = '/index.html' if path == '/'
+	return nil unless time
+	time.strftime('%-d %b %Y').upcase
+end
 
-	# Always publish episode pages under docs/episodes/
-	file_path = File.join('docs', 'episodes', "#{item_slug}.html")
+def parse_chapters(meta)
+	chapters = []
+	meta.each do |key, value|
+		key = key.to_s
+		m = key.match(/\A(?<prefix>PODCAST_(?:COMMERCIAL_)?BLOCK_\d+)_START_TIME\z/)
+		next unless m
 
-	return if File.exist?(file_path)
+		prefix = m[:prefix]
+		title_key = "#{prefix}_TITLE"
+		title = meta[title_key] || meta[title_key.to_sym]
+		next if title.to_s.strip.empty?
 
-	FileUtils.mkdir_p(File.dirname(file_path))
-	File.write(
-		file_path,
-		<<~HTML
-			<!doctype html>
-			<html lang="en">
-			  <head>
-			    <meta charset="utf-8" />
-			    <meta name="viewport" content="width=device-width, initial-scale=1" />
-			    <title>Coming soon</title>
-			  </head>
-			  <body>
-			    Coming soon!
-			  </body>
-			</html>
-		HTML
-	)
+		start_seconds = begin
+			Integer(value)
+		rescue StandardError
+			nil
+		end
+		next if start_seconds.nil?
+
+		chapters << { start: start_seconds, title: title.to_s }
+	end
+	chapters.sort_by { |c| c[:start] }
 end
 
 def json_escape_fragment(value)
-	# Escapes a value for placement inside an existing JSON string context.
-	# JSON.generate wraps in quotes; we strip the leading/trailing quote.
 	JSON.generate(value.to_s)[1..-2]
 end
 
 def render_chapters_json(chapters_template, replacements)
-	# Renders podcast_chapters.json (a JSON template with {{VARS}}) using values from replacements.
-	# It returns pretty-printed, validated JSON.
 	rendered = chapters_template.dup
 
-	# Replace numeric/bool placeholders even if they are quoted in the template: "{{KEY}}" -> 123
 	replacements.each do |key, value|
 		placeholder = "{{#{key}}}"
 		next unless rendered.include?(placeholder)
@@ -228,28 +216,22 @@ def render_chapters_json(chapters_template, replacements)
 		end
 	end
 
-	# Validate + pretty-print
 	JSON.pretty_generate(JSON.parse(rendered)) + "\n"
 end
 
 def ensure_chapters_json_exists(chapters_url, chapters_template_path, replacements)
-	# Writes docs/... based on the path portion of ITEM_PODCAST_CHAPTERS_URL.
-	# Example:
-	#   https://podcast.example.com/chapters/s1e1.json -> docs/chapters/s1e1.json
 	return unless execution_mode?
 	return if chapters_url.nil? || chapters_url.to_s.strip.empty?
 	return unless File.file?(chapters_template_path)
 
-	path = nil
-	begin
+	path = begin
 		uri = URI.parse(chapters_url.to_s)
-		path = uri.path
+		uri.path
 	rescue URI::InvalidURIError
-		path = chapters_url.to_s
+		chapters_url.to_s
 	end
 
 	path = '/' + path unless path.start_with?('/')
-	# We publish site files under docs/
 	rel = path.sub(%r{\A/+}, '')
 	file_path = File.join('docs', rel)
 
@@ -259,57 +241,209 @@ def ensure_chapters_json_exists(chapters_url, chapters_template_path, replacemen
 	File.write(file_path, json)
 end
 
+def write_episode_page(replacements, meta, item_path:, page_slug:)
+	return unless execution_mode?
+	return if page_slug.to_s.strip.empty?
+
+	title = replacements['ITEM_TITLE'].to_s
+	subtitle = replacements['ITEM_SUBTITLE'].to_s
+	description = replacements['ITEM_DESCRIPTION'].to_s
+	duration = replacements['ITEM_DURATION'].to_s
+	season = replacements['ITEM_SEASON'].to_s
+	episode_number = replacements['ITEM_EPISODE'].to_s
+
+	podcast_name = replacements['PODCAST_NAME'].to_s
+	podcast_name = 'The 50 Shades of Beer Podcast' if podcast_name.strip.empty?
+
+	audio_rel = replacements['ITEM_PATH'].to_s
+	audio_url = audio_rel.strip.empty? ? '' : "https://media.xandist.site/#{audio_rel}"
+	chapters_url = replacements['ITEM_PODCAST_CHAPTERS_URL'].to_s
+
+	audio_path = File.join(item_path.to_s, 'audio.mp3')
+	posted = human_date_for_audio(audio_path)
+
+	categories = normalize_categories(meta['CATEGORIES'] || meta['categories'] || meta['Categories'])
+	chapters = parse_chapters(meta)
+
+	FileUtils.mkdir_p(File.join('docs', 'episodes'))
+	file_path = File.join('docs', 'episodes', "#{page_slug}.html")
+
+	html = +''
+	html << "<!doctype html>\n"
+	html << "<html lang=\"en\">\n"
+	html << "\t<head>\n"
+	html << "\t\t<meta charset=\"utf-8\" />\n"
+	html << "\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n"
+	html << "\t\t<meta name=\"description\" content=\"#{html_escape(description.empty? ? title : description)}\" />\n"
+	html << "\t\t<title>#{html_escape(title)} • #{html_escape(podcast_name)}</title>\n"
+	html << "\n"
+	html << "\t\t<link rel=\"preconnect\" href=\"https://cdn.jsdelivr.net\" />\n"
+	html << "\t\t<link\n"
+	html << "\t\t\thref=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\"\n"
+	html << "\t\t\trel=\"stylesheet\"\n"
+	html << "\t\t\tintegrity=\"sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH\"\n"
+	html << "\t\t\tcrossorigin=\"anonymous\"\n"
+	html << "\t\t/>\n"
+	html << "\t\t<link\n"
+	html << "\t\t\trel=\"stylesheet\"\n"
+	html << "\t\t\thref=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css\"\n"
+	html << "\t\t/>\n"
+	html << "\n"
+	html << "\t\t<style>\n"
+	html << "\t\t\t:root { color-scheme: dark; }\n"
+	html << "\t\t\t.hero {\n"
+	html << "\t\t\t\tbackground: radial-gradient(1200px circle at 20% 10%, rgba(13,110,253,0.20), transparent 55%),\n"
+	html << "\t\t\t\t\t\t\t\t\tradial-gradient(900px circle at 70% 40%, rgba(111,66,193,0.20), transparent 55%);\n"
+	html << "\t\t\t}\n"
+	html << "\t\t\t.glass {\n"
+	html << "\t\t\t\tbackground: rgba(255,255,255,0.06);\n"
+	html << "\t\t\t\tborder: 1px solid rgba(255,255,255,0.10);\n"
+	html << "\t\t\t\tbackdrop-filter: blur(10px);\n"
+	html << "\t\t\t}\n"
+	html << "\t\t\t.text-muted-2 { color: rgba(255,255,255,0.70) !important; }\n"
+	html << "\t\t</style>\n"
+	html << "\t</head>\n"
+	html << "\t<body class=\"text-bg-dark\">\n"
+
+	html << "\t\t<nav class=\"navbar navbar-expand-lg navbar-dark border-bottom border-secondary-subtle\">\n"
+	html << "\t\t\t<div class=\"container\">\n"
+	html << "\t\t\t\t<a class=\"navbar-brand fw-semibold\" href=\"../index.html\">\n"
+	html << "\t\t\t\t\t<span class=\"me-2\"><i class=\"bi bi-mic-fill\"></i></span>\n"
+	html << "\t\t\t\t\tThe 50 Shades of Beer Podcast\n"
+	html << "\t\t\t\t</a>\n"
+	html << "\t\t\t\t<button\n"
+	html << "\t\t\t\t\tclass=\"navbar-toggler\"\n"
+	html << "\t\t\t\t\ttype=\"button\"\n"
+	html << "\t\t\t\t\tdata-bs-toggle=\"collapse\"\n"
+	html << "\t\t\t\t\tdata-bs-target=\"#navMain\"\n"
+	html << "\t\t\t\t\taria-controls=\"navMain\"\n"
+	html << "\t\t\t\t\taria-expanded=\"false\"\n"
+	html << "\t\t\t\t\taria-label=\"Toggle navigation\"\n"
+	html << "\t\t\t\t>\n"
+	html << "\t\t\t\t\t<span class=\"navbar-toggler-icon\"></span>\n"
+	html << "\t\t\t\t</button>\n"
+	html << "\t\t\t\t<div class=\"collapse navbar-collapse\" id=\"navMain\">\n"
+	html << "\t\t\t\t\t<ul class=\"navbar-nav ms-auto mb-2 mb-lg-0\">\n"
+	html << "\t\t\t\t\t\t<li class=\"nav-item\"><a class=\"nav-link\" href=\"../index.html\">Home</a></li>\n"
+	html << "\t\t\t\t\t\t<li class=\"nav-item\"><a class=\"nav-link\" href=\"../about.html\">About</a></li>\n"
+	html << "\t\t\t\t\t\t<li class=\"nav-item\"><a class=\"nav-link\" href=\"../support.html\">Support</a></li>\n"
+	html << "\t\t\t\t\t\t<li class=\"nav-item\"><a class=\"nav-link\" href=\"../podcast.xml\">RSS</a></li>\n"
+	html << "\t\t\t\t\t\t<li class=\"nav-item\"><a class=\"nav-link active\" aria-current=\"page\" href=\"index.html\">Episodes</a></li>\n"
+	html << "\t\t\t\t\t</ul>\n"
+	html << "\t\t\t\t</div>\n"
+	html << "\t\t\t</div>\n"
+	html << "\t\t</nav>\n"
+
+	html << "\n"
+	html << "\t\t<header class=\"hero py-5\">\n"
+	html << "\t\t\t<div class=\"container py-4\">\n"
+	html << "\t\t\t\t<div class=\"mb-3\"><a class=\"link-light text-decoration-none\" href=\"index.html\"><i class=\"bi bi-arrow-left me-2\"></i>All episodes</a></div>\n"
+	html << "\t\t\t\t<h1 class=\"display-6 fw-bold mb-2\">#{html_escape(title)}</h1>\n"
+	unless subtitle.strip.empty?
+		html << "\t\t\t\t<p class=\"lead text-muted-2 mb-0\">#{html_escape(subtitle)}</p>\n"
+	end
+	html << "\t\t\t</div>\n"
+	html << "\t\t</header>\n"
+
+	meta_bits = []
+	meta_bits << "S#{season}E#{episode_number}" unless season.strip.empty? || episode_number.strip.empty?
+	meta_bits << posted if posted
+	meta_bits << duration unless duration.strip.empty?
+
+	html << "\n"
+	html << "\t\t<main class=\"py-5\">\n"
+	html << "\t\t\t<div class=\"container\">\n"
+	unless meta_bits.empty?
+		html << "\t\t\t\t<p class=\"small text-muted-2\">#{html_escape(meta_bits.join(' • '))}</p>\n"
+	end
+
+	html << "\t\t\t\t<div class=\"d-flex flex-wrap gap-2 mb-4\">\n"
+	html << "\t\t\t\t\t<a class=\"btn btn-primary\" href=\"#{html_escape(audio_url)}\"#{audio_url.empty? ? ' aria-disabled=\"true\" tabindex=\"-1\"' : ''}><i class=\"bi bi-play-circle me-2\"></i>Audio</a>\n"
+	unless chapters_url.strip.empty?
+		html << "\t\t\t\t\t<a class=\"btn btn-outline-light\" href=\"#{html_escape(chapters_url)}\"><i class=\"bi bi-list-ol me-2\"></i>Chapters JSON</a>\n"
+	end
+	html << "\t\t\t\t</div>\n"
+
+	html << "\t\t\t\t<div class=\"card text-bg-dark border-secondary-subtle mb-4\"><div class=\"card-body p-4\">\n"
+	html << "\t\t\t\t\t<h2 class=\"h5 fw-semibold\">Description</h2>\n"
+	html << "\t\t\t\t\t<p class=\"text-muted-2 mb-0\">#{html_escape(description)}</p>\n"
+	html << "\t\t\t\t</div></div>\n"
+
+	unless chapters.empty?
+		html << "\t\t\t\t<div class=\"card text-bg-dark border-secondary-subtle mb-4\"><div class=\"card-body p-4\">\n"
+		html << "\t\t\t\t\t<h2 class=\"h5 fw-semibold\">Chapters</h2>\n"
+		html << "\t\t\t\t\t<div class=\"list-group list-group-flush\">\n"
+		chapters.each do |c|
+			html << "\t\t\t\t\t\t<div class=\"list-group-item bg-transparent text-light border-secondary-subtle d-flex justify-content-between align-items-start\">\n"
+			html << "\t\t\t\t\t\t\t<div class=\"me-3\">#{html_escape(c[:title])}</div>\n"
+			html << "\t\t\t\t\t\t\t<div class=\"text-muted-2 small\">#{html_escape(format_hhmmss(c[:start]))}</div>\n"
+			html << "\t\t\t\t\t\t</div>\n"
+		end
+		html << "\t\t\t\t\t</div>\n"
+		html << "\t\t\t\t</div></div>\n"
+	end
+
+	unless categories.empty?
+		html << "\t\t\t\t<div class=\"card text-bg-dark border-secondary-subtle\"><div class=\"card-body p-4\">\n"
+		html << "\t\t\t\t\t<h2 class=\"h5 fw-semibold\">Categories</h2>\n"
+		html << "\t\t\t\t\t<div class=\"d-flex flex-wrap gap-2\">\n"
+		categories.each do |c|
+			html << "\t\t\t\t\t\t<span class=\"badge text-bg-secondary\">#{html_escape(c)}</span>\n"
+		end
+		html << "\t\t\t\t\t</div>\n"
+		html << "\t\t\t\t</div></div>\n"
+	end
+
+	html << "\t\t\t</div>\n"
+	html << "\t\t</main>\n"
+
+	html << "\n"
+	html << "\t\t<script\n"
+	html << "\t\t\tsrc=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js\"\n"
+	html << "\t\t\tintegrity=\"sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz\"\n"
+	html << "\t\t\tcrossorigin=\"anonymous\"\n"
+	html << "\t\t></script>\n"
+	html << "\t</body>\n"
+	html << "</html>\n"
+
+	File.write(file_path, html)
+end
+
 config = YAML.load_file(config_path) || {}
 meta = YAML.load_file(meta_path) || {}
 template = File.read(template_path)
 
 def blank?(value)
-	# "Blank" means nil/empty/whitespace.
 	value.nil? || value.to_s.strip.empty?
 end
 
 replacements = {}
-
-# Merge global config and episode meta into one replacement map.
-# Episode meta wins if a key appears in both.
 config.each { |k, v| replacements[k.to_s] = v }
 meta.each { |k, v| replacements[k.to_s] = v }
 
-# Episode directory slug (podcast/s1e12 => s1e12)
 episode_slug = File.basename(item_path.to_s)
-
-# ITEM_PATH is used for media URLs and must be "<episode_slug>/audio.mp3".
 replacements['ITEM_PATH'] = File.join(episode_slug, 'audio.mp3')
 
 if (match = episode_slug.match(/\As(?<season>\d+)e(?<episode>\d+)\z/i))
-	# Derive season/episode from the directory name if not explicitly set.
 	replacements['ITEM_SEASON'] = match[:season] if blank?(replacements['ITEM_SEASON'])
 	replacements['ITEM_EPISODE'] = match[:episode] if blank?(replacements['ITEM_EPISODE'])
 end
 
-# Support nested meta schema by deriving common ITEM_* keys when absent.
-
-# Title/subtitle/description are expected to be authored in meta.yml.
 replacements['ITEM_TITLE'] = meta['title'] || dig_hash(meta, 'itunes', 'title') if blank?(replacements['ITEM_TITLE'])
 replacements['ITEM_SUBTITLE'] = dig_hash(meta, 'itunes', 'subtitle') if blank?(replacements['ITEM_SUBTITLE'])
 replacements['ITEM_LINK'] = meta['link'] if blank?(replacements['ITEM_LINK'])
 
+page_slug = machine_name(replacements['ITEM_TITLE'])
+
 if blank?(replacements['ITEM_LINK'])
-	# If the meta doesn't specify a link, generate one based on PODCAST_LINK and a slugified title.
-	# Also ensure a placeholder HTML page exists (executed mode only).
 	base = replacements['PODCAST_LINK'].to_s.sub(%r{/*\z}, '')
-	slug = machine_name(replacements['ITEM_TITLE'])
-	if !blank?(base) && !blank?(slug)
-		replacements['ITEM_LINK'] = "#{base}/episodes/#{slug}.html"
-		ensure_coming_soon_html_exists(replacements['ITEM_LINK'], slug)
-	end
+	replacements['ITEM_LINK'] = "#{base}/episodes/#{page_slug}.html" if !blank?(base) && !blank?(page_slug)
 end
+
 replacements['ITEM_GUID'] = dig_hash(meta, 'guid', 'value') || meta['guid'] if blank?(replacements['ITEM_GUID'])
 replacements['ITEM_PUBDATE'] = meta['pubDate'] if blank?(replacements['ITEM_PUBDATE'])
 
 if blank?(replacements['ITEM_PUBDATE'])
-	# pubDate defaults to the creation/birth time of podcast/<episode>/audio.mp3.
-	# On macOS, File.birthtime is available; if not, pubDate stays as a placeholder.
 	audio_path = File.join(item_path, 'audio.mp3')
 	begin
 		if File.exist?(audio_path)
@@ -317,37 +451,24 @@ if blank?(replacements['ITEM_PUBDATE'])
 			replacements['ITEM_PUBDATE'] = rss_date_gmt(birth)
 		end
 	rescue StandardError
-		# Leave as placeholder if birthtime isn't available.
 	end
 end
-replacements['ITEM_DESCRIPTION'] = meta['description'] if blank?(replacements['ITEM_DESCRIPTION'])
 
-if blank?(replacements['ITEM_GUID_ISPERMALINK'])
-	# Only relevant if meta.yml provides a nested guid structure.
-	is_permalink = dig_hash(meta, 'guid', 'isPermaLink')
-	unless is_permalink.nil?
-		replacements['ITEM_GUID_ISPERMALINK'] = (is_permalink == true ? 'true' : (is_permalink == false ? 'false' : is_permalink.to_s))
-	end
-end
+replacements['ITEM_DESCRIPTION'] = meta['description'] if blank?(replacements['ITEM_DESCRIPTION'])
 
 replacements['ITEM_CONTENT_ENCODED'] = meta['content_html'] || meta['content_encoded'] || meta['content'] if blank?(replacements['ITEM_CONTENT_ENCODED'])
 replacements['ITEM_ENCLOSURE_LENGTH'] = dig_hash(meta, 'enclosure', 'length') if blank?(replacements['ITEM_ENCLOSURE_LENGTH'])
 replacements['ITEM_ENCLOSURE_TYPE'] = dig_hash(meta, 'enclosure', 'type') if blank?(replacements['ITEM_ENCLOSURE_TYPE'])
 
 if blank?(replacements['ITEM_ENCLOSURE_LENGTH'])
-	# enclosure length in bytes comes from the file size.
 	audio_path = File.join(item_path, 'audio.mp3')
 	begin
-		if File.exist?(audio_path)
-			replacements['ITEM_ENCLOSURE_LENGTH'] = File.size(audio_path).to_s
-		end
+		replacements['ITEM_ENCLOSURE_LENGTH'] = File.size(audio_path).to_s if File.exist?(audio_path)
 	rescue StandardError
-		# Leave as placeholder if size can't be determined.
 	end
 end
 
 if blank?(replacements['ITEM_ENCLOSURE_TYPE'])
-	# MIME type is primarily derived from the file extension; falls back to `file --mime-type`.
 	audio_path = File.join(item_path, 'audio.mp3')
 	begin
 		if File.exist?(audio_path)
@@ -371,13 +492,10 @@ if blank?(replacements['ITEM_ENCLOSURE_TYPE'])
 			replacements['ITEM_ENCLOSURE_TYPE'] = mime unless blank?(mime)
 		end
 	rescue StandardError
-		# Leave as placeholder if type can't be determined.
 	end
 end
 
 if blank?(replacements['ITEM_DURATION'])
-	# Playback duration is derived via ffprobe when available.
-	# For a placeholder empty mp3, we output 00:00:00.
 	audio_path = File.join(item_path, 'audio.mp3')
 	begin
 		if File.exist?(audio_path)
@@ -399,16 +517,15 @@ if blank?(replacements['ITEM_DURATION'])
 			end
 		end
 	rescue StandardError
-		# Leave as placeholder if duration can't be determined.
 	end
 end
+
 replacements['ITEM_DURATION'] = dig_hash(meta, 'itunes', 'duration') if blank?(replacements['ITEM_DURATION'])
 replacements['ITEM_EPISODE'] = dig_hash(meta, 'itunes', 'episode') if blank?(replacements['ITEM_EPISODE'])
 replacements['ITEM_SEASON'] = dig_hash(meta, 'itunes', 'season') if blank?(replacements['ITEM_SEASON'])
 replacements['ITEM_ITUNES_IMAGE_HREF'] = dig_hash(meta, 'itunes', 'image') || dig_hash(meta, 'itunes', 'image_href') if blank?(replacements['ITEM_ITUNES_IMAGE_HREF'])
 
 if blank?(replacements['ITEM_ITUNES_IMAGE_HREF'])
-	# Default episode image is the global cover.
 	base = replacements['PODCAST_LINK'].to_s.sub(%r{/*\z}, '')
 	replacements['ITEM_ITUNES_IMAGE_HREF'] = "#{base}/images/cover.jpg" unless blank?(base)
 end
@@ -416,20 +533,13 @@ end
 replacements['ITEM_PODCAST_CHAPTERS_URL'] = dig_hash(meta, 'podcast', 'chapters', 'url') if blank?(replacements['ITEM_PODCAST_CHAPTERS_URL'])
 
 if blank?(replacements['ITEM_PODCAST_CHAPTERS_URL'])
-	# Default chapters URL uses the episode slug.
 	base = replacements['PODCAST_LINK'].to_s.sub(%r{/*\z}, '')
 	replacements['ITEM_PODCAST_CHAPTERS_URL'] = "#{base}/chapters/#{episode_slug}.json" unless blank?(base) || blank?(episode_slug)
 end
 
 ensure_chapters_json_exists(replacements['ITEM_PODCAST_CHAPTERS_URL'], chapters_template_path, replacements)
+write_episode_page(replacements, meta, item_path: item_path, page_slug: page_slug) unless blank?(page_slug)
 
-replacements['ITEM_PODCAST_CHAPTERS_TYPE'] = dig_hash(meta, 'podcast', 'chapters', 'type') if blank?(replacements['ITEM_PODCAST_CHAPTERS_TYPE'])
-replacements['ITEM_PODCAST_TRANSCRIPT_URL'] = dig_hash(meta, 'podcast', 'transcript', 'url') if blank?(replacements['ITEM_PODCAST_TRANSCRIPT_URL'])
-replacements['ITEM_PODCAST_TRANSCRIPT_TYPE'] = dig_hash(meta, 'podcast', 'transcript', 'type') if blank?(replacements['ITEM_PODCAST_TRANSCRIPT_TYPE'])
-
-# Categories
-
-# ITEM_CATEGORIES injects multiple <category> tags. This keeps the item template clean.
 categories = normalize_categories(meta['CATEGORIES'] || meta['categories'] || meta['Categories'])
 
 if blank?(replacements['ITEM_CATEGORIES'])
@@ -438,7 +548,6 @@ if blank?(replacements['ITEM_CATEGORIES'])
 	replacements['ITEM_CATEGORIES'] = tags.join("\n#{indent}")
 end
 
-# Back-compat: older templates with ITEM_CATEGORY_1..5
 if blank?(replacements['ITEM_CATEGORY_1'])
 	5.times do |i|
 		key = "ITEM_CATEGORY_#{i + 1}"
@@ -448,16 +557,13 @@ end
 
 rendered = template.dup
 
-# Inside CDATA: do not XML-escape.
 content_encoded = replacements['ITEM_CONTENT_ENCODED']
 rendered.gsub!('[ITEM_CONTENT_ENCODED]', content_encoded.to_s) unless blank?(content_encoded)
 
-# Pre-render XML snippets that must not be escaped.
 item_categories = replacements['ITEM_CATEGORIES']
 rendered.gsub!('[ITEM_CATEGORIES]', item_categories.to_s) unless item_categories.nil?
 
 replacements.each do |key, value|
-	# Skip placeholders that are injected raw.
 	next if key == 'ITEM_CONTENT_ENCODED'
 	next if key == 'ITEM_CATEGORIES'
 	next if blank?(value)
@@ -493,13 +599,12 @@ PODCAST_XML="$(ruby -ryaml - "config.yml" "$GLOBAL_TEMPLATE_PATH" <<'RUBY'
 config_path, template_path = ARGV
 
 def xml_escape(value)
-	# Minimal XML escaping for the global template substitution.
 	value.to_s
-		 .gsub('&', '&amp;')
-		 .gsub('<', '&lt;')
-		 .gsub('>', '&gt;')
-		 .gsub('"', '&quot;')
-		 .gsub("'", '&apos;')
+			 .gsub('&', '&amp;')
+			 .gsub('<', '&lt;')
+			 .gsub('>', '&gt;')
+			 .gsub('"', '&quot;')
+			 .gsub("'", '&apos;')
 end
 
 def blank?(value)
@@ -509,12 +614,11 @@ end
 config = YAML.load_file(config_path) || {}
 template = File.read(template_path)
 
-items = ENV['ITEMS'].to_s
-last_build_date = ENV['LAST_BUILD_DATE'].to_s
+items = ENV.fetch('ITEMS', '').to_s
+last_build_date = ENV.fetch('LAST_BUILD_DATE', '').to_s
 
 rendered = template.dup
 
-# Insert raw XML blocks (no escaping)
 rendered.gsub!('[ITEMS]', items) unless blank?(items)
 
 replacements = {}
@@ -541,23 +645,212 @@ if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
 	if command -v xmllint >/dev/null 2>&1; then
 		xmllint --format docs/podcast.xml > docs/podcast.xml.tmp && mv docs/podcast.xml.tmp docs/podcast.xml
 	else
-		python3 - <<'PY'
-from __future__ import annotations
-
-from pathlib import Path
-import xml.dom.minidom as minidom
-
-path = Path('docs/podcast.xml')
-xml_text = path.read_text(encoding='utf-8')
-doc = minidom.parseString(xml_text.encode('utf-8'))
-pretty = doc.toprettyxml(indent='  ', encoding='utf-8').decode('utf-8')
-
-# minidom adds extra blank lines; strip those.
-pretty = "\n".join(line for line in pretty.splitlines() if line.strip()) + "\n"
-
-path.write_text(pretty, encoding='utf-8')
-PY
+		python3 -c "from pathlib import Path; import xml.dom.minidom as minidom; path = Path('docs/podcast.xml'); xml_text = path.read_text(encoding='utf-8'); doc = minidom.parseString(xml_text.encode('utf-8')); pretty = doc.toprettyxml(indent='  ', encoding='utf-8').decode('utf-8'); pretty = '\n'.join(line for line in pretty.splitlines() if line.strip()) + '\n'; path.write_text(pretty, encoding='utf-8')"
 	fi
+
+	# Generate docs/episodes/index.html (season-grouped list)
+	ruby -ryaml - "config.yml" "podcast" <<'RUBY'
+require 'yaml'
+require 'fileutils'
+
+config_path, podcast_root = ARGV
+podcast_root ||= 'podcast'
+
+def blank?(value)
+	value.nil? || value.to_s.strip.empty?
+end
+
+def machine_name(value)
+	value.to_s
+		 .downcase
+		 .gsub(/[^a-z0-9]+/, '-')
+		 .gsub(/\A-+|-+\z/, '')
+end
+
+def html_escape(value)
+	value.to_s
+			 .gsub('&', '&amp;')
+			 .gsub('<', '&lt;')
+			 .gsub('>', '&gt;')
+			 .gsub('"', '&quot;')
+			 .gsub("'", '&#39;')
+end
+
+def human_date_for_audio(audio_path)
+	return nil unless File.exist?(audio_path)
+
+	time = begin
+		File.birthtime(audio_path)
+	rescue StandardError
+		begin
+			File.mtime(audio_path)
+		rescue StandardError
+			nil
+		end
+	end
+
+	return nil unless time
+	time.strftime('%-d %b %Y').upcase
+end
+
+config = (YAML.load_file(config_path) || {})
+podcast_name = config['PODCAST_NAME'].to_s
+podcast_name = 'The 50 Shades of Beer Podcast' if blank?(podcast_name)
+
+episodes = []
+Dir.glob(File.join(podcast_root, '*')).sort.each do |episode_dir|
+	next unless File.directory?(episode_dir)
+
+	meta_path = File.join(episode_dir, 'meta.yml')
+	next unless File.file?(meta_path)
+
+	meta = (YAML.load_file(meta_path) || {})
+	episode_slug = File.basename(episode_dir)
+
+	title = meta['ITEM_TITLE'] || meta['title'] || meta.dig('itunes', 'title')
+	title = title.to_s
+	next if blank?(title)
+
+	page_slug = machine_name(title)
+	next if blank?(page_slug)
+
+	season = 0
+	episode_number = 0
+	if (m = episode_slug.match(/\As(?<season>\d+)e(?<episode>\d+)\z/i))
+		season = m[:season].to_i
+		episode_number = m[:episode].to_i
+	end
+
+	audio_path = File.join(episode_dir, 'audio.mp3')
+	posted = human_date_for_audio(audio_path)
+
+	episodes << {
+		season: season,
+		episode: episode_number,
+		title: title,
+		page_slug: page_slug,
+		posted: posted
+	}
+end
+
+episodes.sort_by! { |e| [e[:season], e[:episode]] }
+groups = episodes.group_by { |e| e[:season] }
+
+FileUtils.mkdir_p(File.join('docs', 'episodes'))
+out_path = File.join('docs', 'episodes', 'index.html')
+
+html = +''
+html << "<!doctype html>\n"
+html << "<html lang=\"en\">\n"
+html << "\t<head>\n"
+html << "\t\t<meta charset=\"utf-8\" />\n"
+html << "\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n"
+html << "\t\t<title>Episodes • #{html_escape(podcast_name)}</title>\n"
+html << "\n"
+html << "\t\t<link rel=\"preconnect\" href=\"https://cdn.jsdelivr.net\" />\n"
+html << "\t\t<link\n"
+html << "\t\t\thref=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\"\n"
+html << "\t\t\trel=\"stylesheet\"\n"
+html << "\t\t\tintegrity=\"sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH\"\n"
+html << "\t\t\tcrossorigin=\"anonymous\"\n"
+html << "\t\t/>\n"
+html << "\t\t<link\n"
+html << "\t\t\trel=\"stylesheet\"\n"
+html << "\t\t\thref=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css\"\n"
+html << "\t\t/>\n"
+html << "\n"
+html << "\t\t<style>\n"
+html << "\t\t\t:root { color-scheme: dark; }\n"
+html << "\t\t\t.hero {\n"
+html << "\t\t\t\tbackground: radial-gradient(1200px circle at 20% 10%, rgba(13,110,253,0.20), transparent 55%),\n"
+html << "\t\t\t\t\t\t\t\t\tradial-gradient(900px circle at 70% 40%, rgba(111,66,193,0.20), transparent 55%);\n"
+html << "\t\t\t}\n"
+html << "\t\t\t.glass {\n"
+html << "\t\t\t\tbackground: rgba(255,255,255,0.06);\n"
+html << "\t\t\t\tborder: 1px solid rgba(255,255,255,0.10);\n"
+html << "\t\t\t\tbackdrop-filter: blur(10px);\n"
+html << "\t\t\t}\n"
+html << "\t\t\t.text-muted-2 { color: rgba(255,255,255,0.70) !important; }\n"
+html << "\t\t</style>\n"
+html << "\t</head>\n"
+html << "\t<body class=\"text-bg-dark\">\n"
+
+html << "\t\t<nav class=\"navbar navbar-expand-lg navbar-dark border-bottom border-secondary-subtle\">\n"
+html << "\t\t\t<div class=\"container\">\n"
+html << "\t\t\t\t<a class=\"navbar-brand fw-semibold\" href=\"../index.html\">\n"
+html << "\t\t\t\t\t<span class=\"me-2\"><i class=\"bi bi-mic-fill\"></i></span>\n"
+html << "\t\t\t\t\tThe 50 Shades of Beer Podcast\n"
+html << "\t\t\t\t</a>\n"
+html << "\t\t\t\t<button\n"
+html << "\t\t\t\t\tclass=\"navbar-toggler\"\n"
+html << "\t\t\t\t\ttype=\"button\"\n"
+html << "\t\t\t\t\tdata-bs-toggle=\"collapse\"\n"
+html << "\t\t\t\t\tdata-bs-target=\"#navMain\"\n"
+html << "\t\t\t\t\taria-controls=\"navMain\"\n"
+html << "\t\t\t\t\taria-expanded=\"false\"\n"
+html << "\t\t\t\t\taria-label=\"Toggle navigation\"\n"
+html << "\t\t\t\t>\n"
+html << "\t\t\t\t\t<span class=\"navbar-toggler-icon\"></span>\n"
+html << "\t\t\t\t</button>\n"
+html << "\t\t\t\t<div class=\"collapse navbar-collapse\" id=\"navMain\">\n"
+html << "\t\t\t\t\t<ul class=\"navbar-nav ms-auto mb-2 mb-lg-0\">\n"
+html << "\t\t\t\t\t\t<li class=\"nav-item\"><a class=\"nav-link\" href=\"../index.html\">Home</a></li>\n"
+html << "\t\t\t\t\t\t<li class=\"nav-item\"><a class=\"nav-link\" href=\"../about.html\">About</a></li>\n"
+html << "\t\t\t\t\t\t<li class=\"nav-item\"><a class=\"nav-link\" href=\"../support.html\">Support</a></li>\n"
+html << "\t\t\t\t\t\t<li class=\"nav-item\"><a class=\"nav-link\" href=\"../podcast.xml\">RSS</a></li>\n"
+html << "\t\t\t\t\t\t<li class=\"nav-item\"><a class=\"nav-link active\" aria-current=\"page\" href=\"index.html\">Episodes</a></li>\n"
+html << "\t\t\t\t\t</ul>\n"
+html << "\t\t\t\t</div>\n"
+html << "\t\t\t</div>\n"
+html << "\t\t</nav>\n"
+
+html << "\n"
+html << "\t\t<header class=\"hero py-5\">\n"
+html << "\t\t\t<div class=\"container py-4\">\n"
+html << "\t\t\t\t<h1 class=\"display-6 fw-bold mb-0\">Episodes</h1>\n"
+html << "\t\t\t</div>\n"
+html << "\t\t</header>\n"
+
+html << "\n"
+html << "\t\t<main class=\"py-5\">\n"
+html << "\t\t\t<div class=\"container\">\n"
+
+if episodes.empty?
+	html << "\t\t\t\t<div class=\"alert alert-secondary\" role=\"alert\">No episodes found.</div>\n"
+else
+	groups.keys.sort.each do |season|
+		season_label = season.to_i > 0 ? "Season #{season}" : 'Season'
+		html << "\t\t\t\t<h2 class=\"h5 fw-semibold mt-4\">#{html_escape(season_label)}</h2>\n"
+		html << "\t\t\t\t<div class=\"list-group\">\n"
+		groups[season].each do |e|
+			meta_line = []
+			meta_line << "S#{e[:season]}E#{e[:episode]}" if e[:season].to_i > 0 && e[:episode].to_i > 0
+			meta_line << e[:posted] if e[:posted]
+
+			html << "\t\t\t\t\t<a class=\"list-group-item list-group-item-action bg-transparent text-light border-secondary-subtle\" href=\"#{html_escape(e[:page_slug])}.html\">\n"
+			html << "\t\t\t\t\t\t<div class=\"fw-semibold\">#{html_escape(e[:title])}</div>\n"
+			unless meta_line.empty?
+				html << "\t\t\t\t\t\t<div class=\"small text-muted-2\">#{html_escape(meta_line.join(' • '))}</div>\n"
+			end
+			html << "\t\t\t\t\t</a>\n"
+		end
+		html << "\t\t\t\t</div>\n"
+	end
+end
+
+html << "\t\t\t</div>\n"
+html << "\t\t</main>\n"
+html << "\n"
+html << "\t\t<script\n"
+html << "\t\t\tsrc=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js\"\n"
+html << "\t\t\tintegrity=\"sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz\"\n"
+html << "\t\t\tcrossorigin=\"anonymous\"\n"
+html << "\t\t></script>\n"
+html << "\t</body>\n"
+html << "</html>\n"
+
+File.write(out_path, html)
+RUBY
 fi
 
 # Episode chapters are generated during the per-episode loop above.
