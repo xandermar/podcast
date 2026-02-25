@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:podcast="https://podcastindex.org/namespace/1.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+  <channel>
+    <title>The 50 Shades of Beer Podcast</title>
+    <link>https://podcast.xandermar.com</link>
+    <description>A conversational podcast covering current events, trending topics, opinions, and reviews.</description>
+    <language>en-us</language>
+    <copyright>© 2026 The 50 Shades of Beer Podcast</copyright>
+    <lastBuildDate>Wed, 25 Feb 2026 18:24:13 GMT</lastBuildDate>
+    <generator>XDM Podcast AI</generator>
+    <itunes:type>episodic</itunes:type>
+    <itunes:author>The 50 Shades of Beer Podcast</itunes:author>
+    <itunes:explicit>no</itunes:explicit>
+    <image>
+      <url>https://podcast.xandermar.com/images/cover.jpg</url>
+      <title>The 50 Shades of Beer Podcast</title>
+      <link>https://podcast.xandermar.com</link>
+    </image>
+    <itunes:image href="https://podcast.xandermar.com/images/cover.jpg"/>
+    <itunes:owner>
+      <itunes:name>The 50 Shades of Beer Podcast</itunes:name>
+      <itunes:email>podcast@xandermar.com</itunes:email>
+    </itunes:owner>
+    <itunes:category text="Technology">
+      <itunes:category text="Business"/>
+    </itunes:category>
+    <podcast:locked>no</podcast:locked>
+    <podcast:funding url="https://www.xandermar.com/support">Support the show</podcast:funding>
+    <podcast:person role="host">The 50 Shades of Beer Podcast</podcast:person>
+    <podcast:license>CC BY-NC-ND 4.0</podcast:license>
+    <podcast:medium>podcast</podcast:medium>
+    <podcast:location>Milton, Delaware, United States</podcast:location>
+    <item>
+      <title>AI Job Automation, Drupal 11 Tips, and RV Road Trips</title>
+      <link>https://podcast.xandermar.com/ai-job-automation-drupal-11-tips-and-rv-road-trips.html</link>
+      <guid isPermaLink="true">https://podcast.xandermar.com/ai-job-automation-drupal-11-tips-and-rv-road-trips.html</guid>
+      <pubDate>Wed, 25 Feb 2026 15:01:14 GMT</pubDate>
+      <description>Dan explores AI-powered job automation, practical Drupal 11 architecture tips, and lessons learned from RV travel across the country.</description>
+      <content:encoded><![CDATA[
+        <p>Full HTML show notes with links, images, timestamps.</p>
+      ]]></content:encoded>
+      <enclosure url="https://media.xandist.site/s1e1/audio.mp3" length="0" type="audio/mpeg"/>
+      <itunes:title>AI Job Automation, Drupal 11 Tips, and RV Road Trips</itunes:title>
+      <itunes:subtitle>Automation, Drupal engineering, and life on the road</itunes:subtitle>
+      <itunes:summary>Dan explores AI-powered job automation, practical Drupal 11 architecture tips, and lessons learned from RV travel across the country.</itunes:summary>
+      <itunes:author>The 50 Shades of Beer Podcast</itunes:author>
+      <itunes:duration>00:00:00</itunes:duration>
+      <itunes:episode>1</itunes:episode>
+      <itunes:season>1</itunes:season>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:image href="https://podcast.xandermar.com/images/cover.jpg"/>
+      <podcast:chapters url="https://podcast.xandermar.com/chapters/s1e1.json" type="application/json"/>
+      <category>Technology</category>
+      <category>Travel</category>
+    </item>
+    <item>
+      <title>Building an AI Recruiter, Drupal 11 Automation, and Life on the Water</title>
+      <link>https://podcast.xandermar.com/building-an-ai-recruiter-drupal-11-automation-and-life-on-the-water.html</link>
+      <guid isPermaLink="true">https://podcast.xandermar.com/building-an-ai-recruiter-drupal-11-automation-and-life-on-the-water.html</guid>
+      <pubDate>Wed, 25 Feb 2026 18:10:44 GMT</pubDate>
+      <description>Dan walks through building an AI-powered recruiter automation system, advanced Drupal 11 workflow techniques, and lessons learned from weekend boating in coastal Delaware.</description>
+      <content:encoded><![CDATA[
+        <p>Full HTML show notes with links, images, timestamps.</p>
+      ]]></content:encoded>
+      <enclosure url="https://media.xandist.site/s1e2/audio.mp3" length="0" type="audio/mpeg"/>
+      <itunes:title>Building an AI Recruiter, Drupal 11 Automation, and Life on the Water</itunes:title>
+      <itunes:subtitle>AI automation, Drupal architecture, and coastal lifestyle insights</itunes:subtitle>
+      <itunes:summary>Dan walks through building an AI-powered recruiter automation system, advanced Drupal 11 workflow techniques, and lessons learned from weekend boating in coastal Delaware.</itunes:summary>
+      <itunes:author>The 50 Shades of Beer Podcast</itunes:author>
+      <itunes:duration>00:00:00</itunes:duration>
+      <itunes:episode>2</itunes:episode>
+      <itunes:season>1</itunes:season>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:image href="https://podcast.xandermar.com/images/cover.jpg"/>
+      <podcast:chapters url="https://podcast.xandermar.com/chapters/s1e2.json" type="application/json"/>
+      <category>Science and Technology</category>
+      <category>Arts and Culture</category>
+    </item>
+  </channel>
+</rss>
