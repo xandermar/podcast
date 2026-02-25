@@ -1,23 +1,15 @@
-ITEM_TITLE: "AI Job Automation, Drupal 11 Tips, and RV Road Trips"
-ITEM_DESCRIPTION: "Dan explores AI-powered job automation, practical Drupal 11 architecture tips, and lessons learned from RV travel across the country."
-ITEM_SUBTITLE: "Automation, Drupal engineering, and life on the road"
-CATEGORIES:
-  - "Technology"
-  - "Travel"
+ITEM_TITLE: "The 50 Shades of Beer Podcast — Series Introduction"
+ITEM_DESCRIPTION: "An energetic introduction to The 50 Shades of Beer Podcast — a show blending current events, political satire, trending topics, technology, media narratives, and unfiltered opinion. This kickoff episode explains the show's premise, tone, recurring segments, and what listeners can expect each week."
+ITEM_SUBTITLE: "Where headlines breathe and the conversation is always on tap."
+CATEGORIES: [
+  "News Commentary",
+  "Satire",
+  "Politics",
+  "Culture",
+  "Opinion",
+  "Trending Topics",
+  "Podcast Launch"
+]
 
-PODCAST_BLOCK_01_START_TIME: 120
-PODCAST_BLOCK_01_TITLE: "AI Job Automation"
-
-PODCAST_COMMERCIAL_BLOCK_01_START_TIME: 420
-PODCAST_COMMERCIAL_BLOCK_01_TITLE: "Sponsor message — Xandermar AI services"
-
-PODCAST_BLOCK_02_START_TIME: 540
-PODCAST_BLOCK_02_TITLE: "Drupal 11 Tips"
-
-PODCAST_COMMERCIAL_BLOCK_02_START_TIME: 1500
-PODCAST_COMMERCIAL_BLOCK_02_TITLE: "Cloudflare R2 podcast hosting promo"
-
-PODCAST_BLOCK_03_START_TIME: 1620
-PODCAST_BLOCK_03_TITLE: "RV Road Trips"
-
-PODCAST_BLOCK_04_START_TIME: 2580
+PODCAST_BLOCK_01_START_TIME: "00:00"
+PODCAST_BLOCK_01_TITLE: "Welcome & Show Premise — Why This Podcast Exists"

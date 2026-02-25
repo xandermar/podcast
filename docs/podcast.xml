@@ -6,7 +6,7 @@
     <description>A conversational podcast covering current events, trending topics, opinions, and reviews.</description>
     <language>en-us</language>
     <copyright>© 2026 The 50 Shades of Beer Podcast</copyright>
-    <lastBuildDate>Wed, 25 Feb 2026 21:22:37 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 25 Feb 2026 22:16:43 GMT</lastBuildDate>
     <generator>XDM Podcast AI</generator>
     <itunes:type>episodic</itunes:type>
     <itunes:author>The 50 Shades of Beer Podcast</itunes:author>
@@ -31,28 +31,33 @@
     <podcast:medium>podcast</podcast:medium>
     <podcast:location>Milton, Delaware, United States</podcast:location>
     <item>
-      <title>AI Job Automation, Drupal 11 Tips, and RV Road Trips</title>
-      <link>https://www.50shades.net/episodes/ai-job-automation-drupal-11-tips-and-rv-road-trips.html</link>
-      <guid isPermaLink="true">https://www.50shades.net/episodes/ai-job-automation-drupal-11-tips-and-rv-road-trips.html</guid>
-      <pubDate>Wed, 25 Feb 2026 15:01:14 GMT</pubDate>
-      <description>Dan explores AI-powered job automation, practical Drupal 11 architecture tips, and lessons learned from RV travel across the country.</description>
+      <title>The 50 Shades of Beer Podcast — Series Introduction</title>
+      <link>https://www.50shades.net/episodes/the-50-shades-of-beer-podcast-series-introduction.html</link>
+      <guid isPermaLink="true">https://www.50shades.net/episodes/the-50-shades-of-beer-podcast-series-introduction.html</guid>
+      <pubDate>Wed, 25 Feb 2026 22:14:16 GMT</pubDate>
+      <description>An energetic introduction to The 50 Shades of Beer Podcast — a show blending current events, political satire, trending topics, technology, media narratives, and unfiltered opinion. This kickoff episode explains the show's premise, tone, recurring segments, and what listeners can expect each week.</description>
       <content:encoded><![CDATA[
         <p>Full HTML show notes with links, images, timestamps.</p>
       ]]></content:encoded>
-      <enclosure url="https://media.xandist.site/s1e1/audio.mp3" length="0" type="audio/mpeg"/>
-      <itunes:title>AI Job Automation, Drupal 11 Tips, and RV Road Trips</itunes:title>
-      <itunes:subtitle>Automation, Drupal engineering, and life on the road</itunes:subtitle>
-      <itunes:summary>Dan explores AI-powered job automation, practical Drupal 11 architecture tips, and lessons learned from RV travel across the country.</itunes:summary>
+      <enclosure url="https://media.xandist.site/s1e1/audio.mp3" length="7800625" type="audio/mpeg"/>
+      <itunes:title>The 50 Shades of Beer Podcast — Series Introduction</itunes:title>
+      <itunes:subtitle>Where headlines breathe and the conversation is always on tap.</itunes:subtitle>
+      <itunes:summary>An energetic introduction to The 50 Shades of Beer Podcast — a show blending current events, political satire, trending topics, technology, media narratives, and unfiltered opinion. This kickoff episode explains the show's premise, tone, recurring segments, and what listeners can expect each week.</itunes:summary>
       <itunes:author>The 50 Shades of Beer Podcast</itunes:author>
-      <itunes:duration>00:00:00</itunes:duration>
+      <itunes:duration>[ITEM_DURATION]</itunes:duration>
       <itunes:episode>1</itunes:episode>
       <itunes:season>1</itunes:season>
       <itunes:episodeType>full</itunes:episodeType>
       <itunes:explicit>no</itunes:explicit>
       <itunes:image href="https://www.50shades.net/images/cover.jpg"/>
       <podcast:chapters url="https://www.50shades.net/chapters/s1e1.json" type="application/json"/>
-      <category>Technology</category>
-      <category>Travel</category>
+      <category>News Commentary</category>
+      <category>Satire</category>
+      <category>Politics</category>
+      <category>Culture</category>
+      <category>Opinion</category>
+      <category>Trending Topics</category>
+      <category>Podcast Launch</category>
     </item>
   </channel>
 </rss>
