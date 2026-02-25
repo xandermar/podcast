@@ -1,0 +1,34 @@
+name: Build Podcast Site
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+
+      - name: Ensure script is executable
+        run: chmod +x build.sh
+
+      - name: Shell syntax check
+        run: bash -n build.sh
+
+      - name: Install optional tools
+        run: |
+          sudo apt-get update
+          # xmllint (libxml2-utils) is optional; build.sh will fall back to Python if absent,
+          # but installing it keeps output formatting consistent.
+          sudo apt-get install -y libxml2-utils
+
+      - name: Run build
+        run: ./build.sh
