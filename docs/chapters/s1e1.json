@@ -1,0 +1,37 @@
+{
+  "version": "1.2.0",
+  "title": "AI Job Automation, Drupal 11 Tips, and RV Road Trips",
+  "author": "The 50 Shades of Beer Podcast",
+  "podcastName": "The 50 Shades of Beer Podcast",
+  "chapters": [
+    {
+      "startTime": 0,
+      "title": "Intro",
+      "img": "https://podcast.xandermar.com/images/cover.jpg"
+    },
+    {
+      "startTime": 120,
+      "title": "AI Job Automation"
+    },
+    {
+      "startTime": 420,
+      "title": "Sponsor message — Xandermar AI services"
+    },
+    {
+      "startTime": 540,
+      "title": "Drupal 11 Tips"
+    },
+    {
+      "startTime": 1500,
+      "title": "Cloudflare R2 podcast hosting promo"
+    },
+    {
+      "startTime": 1620,
+      "title": "RV Road Trips"
+    },
+    {
+      "startTime": 2580,
+      "title": "Closing Thoughts"
+    }
+  ]
+}

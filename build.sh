@@ -16,6 +16,18 @@ LAST_BUILD_DATE="$(date -u +"%a, %d %b %Y %H:%M:%S GMT")"
 # Step 2: Generate ITEMS
 ITEMS=
 
+# If this script is executed (not sourced), allow it to write files.
+BUILD_WRITE_FILES=0
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+	BUILD_WRITE_FILES=1
+fi
+export BUILD_WRITE_FILES
+
+if [[ "$BUILD_WRITE_FILES" == "1" ]]; then
+	rm -rf docs/episodes
+	mkdir -p docs/episodes
+fi
+
 
 ###
 # Render <item> XML for each episode
@@ -36,10 +48,13 @@ for episode_dir in podcast/*; do
 	[[ -f "$meta_path" ]] || { echo "Skipping $episode_dir (missing meta.yml)" >&2; continue; }
 
 	rendered_item="$(
-		ruby -ryaml - "config.yml" "$meta_path" "$ITEM_TEMPLATE_PATH" "$episode_dir" <<'RUBY'
-config_path, meta_path, template_path, item_path = ARGV
+			ruby -ryaml - "config.yml" "$meta_path" "$ITEM_TEMPLATE_PATH" "podcast_chapters.json" "$episode_dir" <<'RUBY'
+	config_path, meta_path, template_path, chapters_template_path, item_path = ARGV
 
 require 'open3'
+require 'fileutils'
+require 'uri'
+	require 'json'
 
 def xml_escape(value)
 	value.to_s
@@ -88,6 +103,103 @@ def command_exists?(cmd)
 	system("command -v #{cmd} >/dev/null 2>&1")
 end
 
+def execution_mode?
+	ENV['BUILD_WRITE_FILES'].to_s == '1'
+end
+
+def ensure_coming_soon_html_exists(item_link, item_slug)
+	return unless execution_mode?
+	return if item_link.nil? || item_link.to_s.strip.empty?
+	return if item_slug.nil? || item_slug.to_s.strip.empty?
+
+	path = nil
+	begin
+		uri = URI.parse(item_link.to_s)
+		path = uri.path
+	rescue URI::InvalidURIError
+		path = item_link.to_s
+	end
+
+	path = '/' + path unless path.start_with?('/')
+	path = '/index.html' if path == '/'
+
+	# Always publish episode pages under docs/episodes/
+	file_path = File.join('docs', 'episodes', "#{item_slug}.html")
+
+	return if File.exist?(file_path)
+
+	FileUtils.mkdir_p(File.dirname(file_path))
+	File.write(
+		file_path,
+		<<~HTML
+			<!doctype html>
+			<html lang="en">
+			  <head>
+			    <meta charset="utf-8" />
+			    <meta name="viewport" content="width=device-width, initial-scale=1" />
+			    <title>Coming soon</title>
+			  </head>
+			  <body>
+			    Coming soon!
+			  </body>
+			</html>
+		HTML
+	)
+end
+
+def json_escape_fragment(value)
+	# Escapes a value for placement inside an existing JSON string context.
+	JSON.generate(value.to_s)[1..-2]
+end
+
+def render_chapters_json(chapters_template, replacements)
+	rendered = chapters_template.dup
+
+	# Replace numeric/bool placeholders even if they are quoted in the template: "{{KEY}}" -> 123
+	replacements.each do |key, value|
+		placeholder = "{{#{key}}}"
+		next unless rendered.include?(placeholder)
+
+		case value
+		when Integer, Float
+			rendered.gsub!(%Q{"#{placeholder}"}, value.to_s)
+			rendered.gsub!(placeholder, value.to_s)
+		when TrueClass, FalseClass
+			rendered.gsub!(%Q{"#{placeholder}"}, value ? 'true' : 'false')
+			rendered.gsub!(placeholder, value ? 'true' : 'false')
+		else
+			rendered.gsub!(placeholder, json_escape_fragment(value))
+		end
+	end
+
+	# Validate + pretty-print
+	JSON.pretty_generate(JSON.parse(rendered)) + "\n"
+end
+
+def ensure_chapters_json_exists(chapters_url, chapters_template_path, replacements)
+	return unless execution_mode?
+	return if chapters_url.nil? || chapters_url.to_s.strip.empty?
+	return unless File.file?(chapters_template_path)
+
+	path = nil
+	begin
+		uri = URI.parse(chapters_url.to_s)
+		path = uri.path
+	rescue URI::InvalidURIError
+		path = chapters_url.to_s
+	end
+
+	path = '/' + path unless path.start_with?('/')
+	# We publish site files under docs/
+	rel = path.sub(%r{\A/+}, '')
+	file_path = File.join('docs', rel)
+
+	FileUtils.mkdir_p(File.dirname(file_path))
+	chapters_template = File.read(chapters_template_path)
+	json = render_chapters_json(chapters_template, replacements)
+	File.write(file_path, json)
+end
+
 config = YAML.load_file(config_path) || {}
 meta = YAML.load_file(meta_path) || {}
 template = File.read(template_path)
@@ -115,7 +227,10 @@ replacements['ITEM_LINK'] = meta['link'] if blank?(replacements['ITEM_LINK'])
 if blank?(replacements['ITEM_LINK'])
 	base = replacements['PODCAST_LINK'].to_s.sub(%r{/*\z}, '')
 	slug = machine_name(replacements['ITEM_TITLE'])
-	replacements['ITEM_LINK'] = "#{base}/#{slug}.html" unless blank?(base) || blank?(slug)
+	if !blank?(base) && !blank?(slug)
+		replacements['ITEM_LINK'] = "#{base}/episodes/#{slug}.html"
+		ensure_coming_soon_html_exists(replacements['ITEM_LINK'], slug)
+	end
 end
 replacements['ITEM_GUID'] = dig_hash(meta, 'guid', 'value') || meta['guid'] if blank?(replacements['ITEM_GUID'])
 replacements['ITEM_PUBDATE'] = meta['pubDate'] if blank?(replacements['ITEM_PUBDATE'])
@@ -224,6 +339,8 @@ if blank?(replacements['ITEM_PODCAST_CHAPTERS_URL'])
 	base = replacements['PODCAST_LINK'].to_s.sub(%r{/*\z}, '')
 	replacements['ITEM_PODCAST_CHAPTERS_URL'] = "#{base}/chapters/#{episode_slug}.json" unless blank?(base) || blank?(episode_slug)
 end
+
+ensure_chapters_json_exists(replacements['ITEM_PODCAST_CHAPTERS_URL'], chapters_template_path, replacements)
 
 replacements['ITEM_PODCAST_CHAPTERS_TYPE'] = dig_hash(meta, 'podcast', 'chapters', 'type') if blank?(replacements['ITEM_PODCAST_CHAPTERS_TYPE'])
 replacements['ITEM_PODCAST_TRANSCRIPT_URL'] = dig_hash(meta, 'podcast', 'transcript', 'url') if blank?(replacements['ITEM_PODCAST_TRANSCRIPT_URL'])
@@ -354,4 +471,6 @@ PY
 	fi
 fi
 
+
+# Generate episode chapters (ex: /docs/chapters/s1e1.json)
 

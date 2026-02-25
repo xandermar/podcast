@@ -1,0 +1,37 @@
+{
+  "version": "1.2.0",
+  "title": "Building an AI Recruiter, Drupal 11 Automation, and Life on the Water",
+  "author": "The 50 Shades of Beer Podcast",
+  "podcastName": "The 50 Shades of Beer Podcast",
+  "chapters": [
+    {
+      "startTime": 0,
+      "title": "Intro",
+      "img": "https://podcast.xandermar.com/images/cover.jpg"
+    },
+    {
+      "startTime": 0,
+      "title": "Opening Monologue and Episode Overview"
+    },
+    {
+      "startTime": 420,
+      "title": "Sponsor Message: Xandermar AI Solutions"
+    },
+    {
+      "startTime": 540,
+      "title": "Designing an AI Recruiter Platform"
+    },
+    {
+      "startTime": 1680,
+      "title": "Sponsor Message: Cloud Hosting and DevOps Stack"
+    },
+    {
+      "startTime": 1800,
+      "title": "Drupal 11 Automation and Workflow Engineering"
+    },
+    {
+      "startTime": 3120,
+      "title": "Closing Thoughts"
+    }
+  ]
+}
