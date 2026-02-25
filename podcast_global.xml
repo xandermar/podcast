@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+  <channel>
+    <title>[PODCAST_NAME]</title>
+    <link>[PODCAST_LINK]</link>
+    <description>[PODCAST_DESCRIPTION]</description>
+    <language>en-us</language>
+    <copyright>© [CURRENT_YEAR] [PODCAST_NAME]</copyright>
+    <lastBuildDate>[LASTBUILDDATE]</lastBuildDate>
+    <generator>[GENERATOR]</generator>
+
+    <itunes:type>[ITUNES_TYPE]</itunes:type>
+    <itunes:author>[PODCAST_NAME]</itunes:author>
+    <itunes:explicit>no</itunes:explicit>
+
+    <image>
+      <url>[PODCAST_LINK]/images/cover.jpg</url>
+      <title>[PODCAST_NAME]</title>
+      <link>[PODCAST_LINK]</link>
+    </image>
+
+    <itunes:image href="[PODCAST_LINK]/images/cover.jpg" />
+
+    <itunes:owner>
+      <itunes:name>[PODCAST_NAME]</itunes:name>
+      <itunes:email>[PODCAST_EMAIL]</itunes:email>
+    </itunes:owner>
+
+    <itunes:category text="Technology">
+      <itunes:category text="Business"/>
+    </itunes:category>
+
+    <podcast:locked>no</podcast:locked>
+    <podcast:funding url="https://www.xandermar.com/support">Support the show</podcast:funding>
+    <podcast:person role="host">[PODCAST_NAME]</podcast:person>
+    <podcast:license>CC BY-NC-ND 4.0</podcast:license>
+    <podcast:medium>podcast</podcast:medium>
+    <podcast:location>[PODCAST_LOCATION]</podcast:location>
+
+    [ITEMS]
+
+  </channel>
+</rss>

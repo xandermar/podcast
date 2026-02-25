@@ -1,0 +1,37 @@
+{
+  "version": "1.2.0",
+  "title": "{{ITEM_TITLE}}",
+  "author": "{{PODCAST_NAME}}",
+  "podcastName": "{{PODCAST_NAME}}",
+  "chapters": [
+    {
+      "startTime": 0,
+      "title": "Intro",
+      "img": "{{PODCAST_LINK}}/images/cover.jpg"
+    },
+    {
+      "startTime": "{{PODCAST_BLOCK_01_START_TIME}}",
+      "title": "{{PODCAST_BLOCK_01_TITLE}}"
+    },
+    {
+      "startTime": "{{PODCAST_COMMERCIAL_BLOCK_01_START_TIME}}",
+      "title": "{{PODCAST_COMMERCIAL_BLOCK_01_TITLE}}"
+    },
+    {
+      "startTime": "{{PODCAST_BLOCK_02_START_TIME}}",
+      "title": "{{PODCAST_BLOCK_02_TITLE}}"
+    },
+    {
+      "startTime": "{{PODCAST_COMMERCIAL_BLOCK_02_START_TIME}}",
+      "title": "{{PODCAST_COMMERCIAL_BLOCK_02_TITLE}}"
+    },
+    {
+      "startTime": "{{PODCAST_BLOCK_03_START_TIME}}",
+      "title": "{{PODCAST_BLOCK_03_TITLE}}"
+    },
+    {
+      "startTime": "{{PODCAST_BLOCK_04_START_TIME}}",
+      "title": "Closing Thoughts"
+    }
+  ]
+}

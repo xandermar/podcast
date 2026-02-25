@@ -1,0 +1,38 @@
+    <item>
+      <title>[ITEM_TITLE]</title>
+      <link>[ITEM_LINK]</link>
+      <guid isPermaLink="[ITEM_GUID_ISPERMALINK]">[ITEM_GUID]</guid>
+      <pubDate>[ITEM_PUBDATE]</pubDate>
+
+      <description>[ITEM_DESCRIPTION]</description>
+
+      <content:encoded><![CDATA[
+        [ITEM_CONTENT_ENCODED]
+      ]]></content:encoded>
+
+      <enclosure
+        url="https://media.xandist.site/[ITEM_PATH]/audio.mp3"
+        length="[ITEM_ENCLOSURE_LENGTH]"
+        type="[ITEM_ENCLOSURE_TYPE]" />
+
+      <itunes:title>[ITEM_TITLE]</itunes:title>
+      <itunes:subtitle>[ITEM_SUBTITLE]</itunes:subtitle>
+      <itunes:summary>[ITEM_DESCRIPTION]</itunes:summary>
+      <itunes:author>[PODCAST_NAME]</itunes:author>
+      <itunes:duration>[ITEM_DURATION]</itunes:duration>
+      <itunes:episode>[ITEM_EPISODE]</itunes:episode>
+      <itunes:season>[ITEM_SEASON]</itunes:season>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:image href="[ITEM_ITUNES_IMAGE_HREF]"/>
+
+      <podcast:chapters url="[ITEM_PODCAST_CHAPTERS_URL]" type="[ITEM_PODCAST_CHAPTERS_TYPE]"/>
+      <podcast:transcript url="[ITEM_PODCAST_TRANSCRIPT_URL]" type="[ITEM_PODCAST_TRANSCRIPT_TYPE]"/>
+
+      <category>[ITEM_CATEGORY_1]</category>
+      <category>[ITEM_CATEGORY_2]</category>
+      <category>[ITEM_CATEGORY_3]</category>
+      <category>[ITEM_CATEGORY_4]</category>
+      <category>[ITEM_CATEGORY_5]</category>
+
+    </item>
