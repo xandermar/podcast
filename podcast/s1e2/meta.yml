@@ -1,0 +1,26 @@
+ITEM_TITLE: "Iran Conflict, Kristi Noem and DHS, Odds and Ends (Brittany Spears DUI, ChiBears, Lou Holtz)"
+ITEM_DESCRIPTION: "In this debut episode, we dive into the rapidly escalating Iran conflict and what it could mean for the United States, global energy markets, and the broader Middle East as tensions rise and military operations intensify. We also unpack the political shake-up at the Department of Homeland Security following the removal of Kristi Noem as DHS Secretary and her reassignment to a new security role tied to the administration’s “Shield of the Americas” initiative, along with the internal drama and policy implications surrounding the move. Then we shift gears with some lighter—but still headline-worthy—odds and ends, including the latest buzz around a Britney Spears DUI incident, a quick look at what’s going on with the Chicago Bears, and a nostalgic discussion about legendary football coach Lou Holtz and his long-running influence on the game."
+ITEM_SUBTITLE: "Where headlines breathe and the conversation is always on tap."
+CATEGORIES: [
+  "Iran Conflict",
+  "Kristi Noem",
+  "Brittany Spears",
+  "Chicago Bears",
+  "Lou Holtz"
+]
+
+
+PODCAST_BLOCK_01_START_TIME: "00:00"
+PODCAST_BLOCK_01_TITLE: "Iran Conflict — What’s Happening and Why It Matters"
+
+PODCAST_COMMERCIAL_BLOCK_01_START_TIME: "11:13"
+PODCAST_COMMERCIAL_BLOCK_01_TITLE: "Sit back and relax with our sponsor — the perfect companion for your podcast listening experience."
+
+PODCAST_BLOCK_02_START_TIME: "12:29"
+PODCAST_BLOCK_02_TITLE: "Kristi Noem and DHS — Political Shake-Up and Policy Implications"
+
+PODCAST_COMMERCIAL_BLOCK_02_START_TIME: "20:44"
+PODCAST_COMMERCIAL_BLOCK_02_TITLE: "The Wife Remote — Because even the best podcasts deserve a great sponsor. Check out The Wife Remote for the ultimate in convenience and comfort while you listen."
+
+PODCAST_BLOCK_03_START_TIME: "21:37"
+PODCAST_BLOCK_03_TITLE: "Odds and Ends — Britney Spears DUI, Chicago Bears, and Lou Holtz"

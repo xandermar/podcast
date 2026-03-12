@@ -198,6 +198,36 @@ def json_escape_fragment(value)
 end
 
 def render_chapters_json(chapters_template, replacements)
+	def blank_str?(value)
+		value.nil? || value.to_s.strip.empty?
+	end
+
+	def placeholder?(value)
+		value.is_a?(String) && value.match?(/\A\{\{[A-Z0-9_]+\}\}\z/)
+	end
+
+	def time_string?(value)
+		return false unless value.is_a?(String)
+		value = value.strip
+		return false if value.empty?
+		value.match?(/\A\d{1,2}:\d{2}(:\d{2})?\z/)
+	end
+
+	def valid_start_time?(value)
+		return true if value.is_a?(Integer) || value.is_a?(Float)
+		return false if blank_str?(value)
+		return false if placeholder?(value)
+		return true if time_string?(value)
+		return true if value.is_a?(String) && value.strip.match?(/\A\d+\z/)
+		false
+	end
+
+	def valid_title?(value)
+		return false if blank_str?(value)
+		return false if placeholder?(value)
+		true
+	end
+
 	rendered = chapters_template.dup
 
 	replacements.each do |key, value|
@@ -216,7 +246,16 @@ def render_chapters_json(chapters_template, replacements)
 		end
 	end
 
-	JSON.pretty_generate(JSON.parse(rendered)) + "\n"
+	parsed = JSON.parse(rendered)
+
+	if parsed.is_a?(Hash) && parsed['chapters'].is_a?(Array)
+		parsed['chapters'] = parsed['chapters'].select do |chapter|
+			next false unless chapter.is_a?(Hash)
+			valid_start_time?(chapter['startTime']) && valid_title?(chapter['title'])
+		end
+	end
+
+	JSON.pretty_generate(parsed) + "\n"
 end
 
 def ensure_chapters_json_exists(chapters_url, chapters_template_path, replacements)

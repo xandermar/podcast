@@ -6,7 +6,7 @@
     <description>A conversational podcast covering current events, trending topics, opinions, and reviews.</description>
     <language>en-us</language>
     <copyright>© 2026 The 50 Shades of Beer Podcast</copyright>
-    <lastBuildDate>Thu, 26 Feb 2026 20:42:41 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 12 Mar 2026 17:24:04 GMT</lastBuildDate>
     <generator>XDM Podcast AI</generator>
     <itunes:type>episodic</itunes:type>
     <itunes:author>The 50 Shades of Beer Podcast</itunes:author>
@@ -44,7 +44,7 @@
       <itunes:subtitle>Where headlines breathe and the conversation is always on tap.</itunes:subtitle>
       <itunes:summary>An energetic introduction to The 50 Shades of Beer Podcast — a show blending current events, political satire, trending topics, technology, media narratives, and unfiltered opinion. This kickoff episode explains the show's premise, tone, recurring segments, and what listeners can expect each week.</itunes:summary>
       <itunes:author>The 50 Shades of Beer Podcast</itunes:author>
-      <itunes:duration>[ITEM_DURATION]</itunes:duration>
+      <itunes:duration>00:08:13</itunes:duration>
       <itunes:episode>1</itunes:episode>
       <itunes:season>1</itunes:season>
       <itunes:episodeType>full</itunes:episodeType>
@@ -58,6 +58,33 @@
       <category>Opinion</category>
       <category>Trending Topics</category>
       <category>Podcast Launch</category>
+    </item>
+    <item>
+      <title>Iran Conflict, Kristi Noem and DHS, Odds and Ends (Brittany Spears DUI, ChiBears, Lou Holtz)</title>
+      <link>https://www.50shades.net/episodes/iran-conflict-kristi-noem-and-dhs-odds-and-ends-brittany-spears-dui-chibears-lou-holtz.html</link>
+      <guid isPermaLink="true">https://www.50shades.net/episodes/iran-conflict-kristi-noem-and-dhs-odds-and-ends-brittany-spears-dui-chibears-lou-holtz.html</guid>
+      <pubDate>Thu, 12 Mar 2026 17:04:10 GMT</pubDate>
+      <description>In this debut episode, we dive into the rapidly escalating Iran conflict and what it could mean for the United States, global energy markets, and the broader Middle East as tensions rise and military operations intensify. We also unpack the political shake-up at the Department of Homeland Security following the removal of Kristi Noem as DHS Secretary and her reassignment to a new security role tied to the administration’s “Shield of the Americas” initiative, along with the internal drama and policy implications surrounding the move. Then we shift gears with some lighter—but still headline-worthy—odds and ends, including the latest buzz around a Britney Spears DUI incident, a quick look at what’s going on with the Chicago Bears, and a nostalgic discussion about legendary football coach Lou Holtz and his long-running influence on the game.</description>
+      <content:encoded><![CDATA[
+        <p>Full HTML show notes with links, images, timestamps.</p>
+      ]]></content:encoded>
+      <enclosure url="https://media.xandist.site/s1e2/audio.mp3" length="57442347" type="audio/mpeg"/>
+      <itunes:title>Iran Conflict, Kristi Noem and DHS, Odds and Ends (Brittany Spears DUI, ChiBears, Lou Holtz)</itunes:title>
+      <itunes:subtitle>Where headlines breathe and the conversation is always on tap.</itunes:subtitle>
+      <itunes:summary>In this debut episode, we dive into the rapidly escalating Iran conflict and what it could mean for the United States, global energy markets, and the broader Middle East as tensions rise and military operations intensify. We also unpack the political shake-up at the Department of Homeland Security following the removal of Kristi Noem as DHS Secretary and her reassignment to a new security role tied to the administration’s “Shield of the Americas” initiative, along with the internal drama and policy implications surrounding the move. Then we shift gears with some lighter—but still headline-worthy—odds and ends, including the latest buzz around a Britney Spears DUI incident, a quick look at what’s going on with the Chicago Bears, and a nostalgic discussion about legendary football coach Lou Holtz and his long-running influence on the game.</itunes:summary>
+      <itunes:author>The 50 Shades of Beer Podcast</itunes:author>
+      <itunes:duration>00:39:53</itunes:duration>
+      <itunes:episode>2</itunes:episode>
+      <itunes:season>1</itunes:season>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:image href="https://www.50shades.net/images/cover.jpg"/>
+      <podcast:chapters url="https://www.50shades.net/chapters/s1e2.json" type="application/json"/>
+      <category>Iran Conflict</category>
+      <category>Kristi Noem</category>
+      <category>Brittany Spears</category>
+      <category>Chicago Bears</category>
+      <category>Lou Holtz</category>
     </item>
   </channel>
 </rss>
