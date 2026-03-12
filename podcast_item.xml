@@ -28,6 +28,8 @@
 
       <podcast:chapters url="[ITEM_PODCAST_CHAPTERS_URL]" type="application/json"/>
 
+      [ITEM_PODCAST_TRANSCRIPT]
+
       [ITEM_CATEGORIES]
 
     </item>

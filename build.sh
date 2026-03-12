@@ -148,6 +148,29 @@ def command_exists?(cmd)
 	system("command -v #{cmd} >/dev/null 2>&1")
 end
 
+def infer_mime_type_from_url(url)
+	return nil if url.nil?
+	url = url.to_s.strip
+	return nil if url.empty?
+
+	path = begin
+		URI.parse(url).path.to_s
+	rescue StandardError
+		url
+	end
+
+	ext = File.extname(path).downcase
+	case ext
+	when '.txt' then 'text/plain'
+	when '.html', '.htm' then 'text/html'
+	when '.json' then 'application/json'
+	when '.srt' then 'application/x-subrip'
+	when '.vtt' then 'text/vtt'
+	else
+		nil
+	end
+end
+
 def execution_mode?
 	ENV.fetch('BUILD_WRITE_FILES', '0').to_s == '1'
 end
@@ -577,6 +600,28 @@ if blank?(replacements['ITEM_PODCAST_CHAPTERS_URL'])
 end
 
 ensure_chapters_json_exists(replacements['ITEM_PODCAST_CHAPTERS_URL'], chapters_template_path, replacements)
+
+transcript_url = (
+	replacements['ITEM_PODCAST_TRANSCRIPT_URL'] ||
+	dig_hash(meta, 'podcast', 'transcript', 'url') ||
+	meta['podcast_transcript_url'] ||
+	meta['transcript_url']
+)
+
+transcript_type = (
+	replacements['ITEM_PODCAST_TRANSCRIPT_TYPE'] ||
+	dig_hash(meta, 'podcast', 'transcript', 'type') ||
+	meta['podcast_transcript_type'] ||
+	meta['transcript_type'] ||
+	infer_mime_type_from_url(transcript_url) ||
+	'text/plain'
+)
+
+replacements['ITEM_PODCAST_TRANSCRIPT'] = if blank?(transcript_url)
+	''
+else
+	%Q{<podcast:transcript url="#{xml_escape(transcript_url)}" type="#{xml_escape(transcript_type)}"/>}
+end
 write_episode_page(replacements, meta, item_path: item_path, page_slug: page_slug) unless blank?(page_slug)
 
 categories = normalize_categories(meta['CATEGORIES'] || meta['categories'] || meta['Categories'])
@@ -602,9 +647,13 @@ rendered.gsub!('[ITEM_CONTENT_ENCODED]', content_encoded.to_s) unless blank?(con
 item_categories = replacements['ITEM_CATEGORIES']
 rendered.gsub!('[ITEM_CATEGORIES]', item_categories.to_s) unless item_categories.nil?
 
+transcript_tag = replacements.fetch('ITEM_PODCAST_TRANSCRIPT', '')
+rendered.gsub!('[ITEM_PODCAST_TRANSCRIPT]', transcript_tag.to_s)
+
 replacements.each do |key, value|
 	next if key == 'ITEM_CONTENT_ENCODED'
 	next if key == 'ITEM_CATEGORIES'
+	next if key == 'ITEM_PODCAST_TRANSCRIPT'
 	next if blank?(value)
 	rendered.gsub!("[#{key}]", xml_escape(value))
 end
