@@ -29,8 +29,16 @@
       <itunes:email>[PODCAST_EMAIL]</itunes:email>
     </itunes:owner>
 
-    <itunes:category text="Technology">
-      <itunes:category text="Business"/>
+    <itunes:category text="News">
+      <itunes:category text="Commentary"/>
+    </itunes:category>
+
+    <itunes:category text="Comedy">
+      <itunes:category text="Comedy Interviews"/>
+    </itunes:category>
+
+    <itunes:category text="Society &amp; Culture">
+      <itunes:category text="Commentary"/>
     </itunes:category>
 
     <podcast:locked>no</podcast:locked>
