@@ -136,7 +136,7 @@ If these are not present in an episode `meta.yml`, [build.sh](build.sh) derives 
 	- Derived from the birth/creation time of `podcast/<episode>/audio.mp3` when available
 
 - `ITEM_PATH`
-	- Always set to `<episode>/audio.mp3` (used for enclosure URL building in templates)
+	- Set to `<episode>/audio.mp3?v=<epoch>` (used for enclosure URL building in templates; epoch is computed at build time)
 
 - `ITEM_ENCLOSURE_LENGTH`
 	- File size of `audio.mp3` in bytes

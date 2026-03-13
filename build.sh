@@ -38,6 +38,11 @@
 # RSS-friendly lastBuildDate (RFC 822-ish, GMT). This is injected into the global template.
 LAST_BUILD_DATE="$(date -u +"%a, %d %b %Y %H:%M:%S GMT")"
 
+# Cache-buster used for media URLs (e.g. s1e1/audio.mp3?v=1773415443).
+# Exported so the embedded Ruby renderer can use a single build-wide value.
+CACHE_BUSTER_EPOCH="$(date +%s)"
+export CACHE_BUSTER_EPOCH
+
 # Holds the concatenated rendered <item> blocks.
 ITEMS=
 
@@ -484,7 +489,9 @@ config.each { |k, v| replacements[k.to_s] = v }
 meta.each { |k, v| replacements[k.to_s] = v }
 
 episode_slug = File.basename(item_path.to_s)
-replacements['ITEM_PATH'] = File.join(episode_slug, 'audio.mp3')
+cache_buster = ENV['CACHE_BUSTER_EPOCH'].to_s.strip
+cache_buster = Time.now.to_i.to_s if cache_buster.empty?
+replacements['ITEM_PATH'] = "#{File.join(episode_slug, 'audio.mp3')}?v=#{cache_buster}"
 
 if (match = episode_slug.match(/\As(?<season>\d+)e(?<episode>\d+)\z/i))
 	replacements['ITEM_SEASON'] = match[:season] if blank?(replacements['ITEM_SEASON'])

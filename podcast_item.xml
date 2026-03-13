@@ -7,7 +7,7 @@
       <description>[ITEM_DESCRIPTION]</description>
 
       <content:encoded><![CDATA[
-        <p>Full HTML show notes with links, images, timestamps.</p>
+        <p><strong>[ITEM_TITLE]</strong></p><p>[ITEM_DESCRIPTION]</p>
       ]]></content:encoded>
 
       <enclosure
