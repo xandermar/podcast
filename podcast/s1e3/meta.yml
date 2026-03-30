@@ -1,0 +1,27 @@
+ITEM_TITLE: "S1E3: TSA Gets ICE Help; SCOTUS Mail-In Ballots; Odds and Ends (Deployment, Mullen and Delta)"
+ITEM_DESCRIPTION: "We break down the move to bring in ICE support for TSA operations, the Supreme Court’s latest on mail-in ballots, and a grab bag of other headlines worth watching. We also hit a few odds and ends, including deployment chatter, Mullen, and Delta, with sharp commentary and straight talk on what it all means. Fast-moving, opinionated, and packed with real-world implications, this episode covers a lot of ground without wasting your time."
+ITEM_SUBTITLE: "Where headlines breathe and the conversation is always on tap."
+CATEGORIES: [
+  "TSA",
+  "DHS",
+  "SCOTUS",
+  "Mail-In Ballots",
+  "Mullen",
+  "Delta Airlines"
+]
+
+
+PODCAST_BLOCK_01_START_TIME: "00:00"
+PODCAST_BLOCK_01_TITLE: "TSA Gets ICE Help"
+
+PODCAST_COMMERCIAL_BLOCK_01_START_TIME: "14:28"
+PODCAST_COMMERCIAL_BLOCK_01_TITLE: "Christina's Creations — For the best in handmade, personalized gifts, check out Christina's Creations. From custom mugs to unique home decor, there's something for everyone. Support small business and find the perfect gift today at christinas-creations.shop."
+
+PODCAST_BLOCK_02_START_TIME: "15:37"
+PODCAST_BLOCK_02_TITLE: "SCOTUS Mail-In Ballots"
+
+PODCAST_COMMERCIAL_BLOCK_02_START_TIME: "26:17"
+PODCAST_COMMERCIAL_BLOCK_02_TITLE: "Nick Ward with NEXA Lending — If you're looking to refinance your home or need a personal loan, Nick Ward at NEXA Lending has you covered. With competitive rates and personalized service, NEXA Lending can help you achieve your financial goals. Contact Nick Ward today at Nward@nexalending.com or call 315-857-5058 to get started."
+
+PODCAST_BLOCK_03_START_TIME: "27:22"
+PODCAST_BLOCK_03_TITLE: "Odds and Ends (Deployment, Mullen and Delta)"
