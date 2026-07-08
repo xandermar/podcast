@@ -6,7 +6,7 @@
     <description>A conversational podcast covering current events, trending topics, opinions, and reviews.</description>
     <language>en-us</language>
     <copyright>©2026 The 50 Shades of Beer Podcast</copyright>
-    <lastBuildDate>Sat, 23 May 2026 21:49:34 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2026 02:14:30 GMT</lastBuildDate>
     <generator>XDM Podcast AI</generator>
     <itunes:type>episodic</itunes:type>
     <itunes:author>Big D and G Funkadelic Radio Network</itunes:author>
@@ -34,13 +34,33 @@
     <podcast:medium>podcast</podcast:medium>
     <podcast:location>Milton, Delaware, United States</podcast:location>
     <item>
+      <title>S1E2: Test Episode</title>
+      <link>https://www.50shades.net/episodes/s1e2.html</link>
+      <guid isPermaLink="true">https://www.50shades.net/episodes/s1e2.html</guid>
+      <pubDate>Wed, 27 May 2026 16:32:23 GMT</pubDate>
+      <description>This is a test episode.</description>
+      <content:encoded><![CDATA[This is a test episode.]]></content:encoded>
+      <enclosure url="https://www.50shades.net/episodes/s1e2/segment-01.mp3" length="" type="audio/mpeg"/>
+      <itunes:title>S1E2: Test Episode</itunes:title>
+      <itunes:subtitle></itunes:subtitle>
+      <itunes:summary>This is a test episode.</itunes:summary>
+      <itunes:author>Big D and G Funkadelic Radio Network</itunes:author>
+      <itunes:duration></itunes:duration>
+      <itunes:episode>2</itunes:episode>
+      <itunes:season>1</itunes:season>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:image href="https://www.50shades.net/images/cover.jpg"/>
+      <podcast:chapters url="" type=""/>
+    </item>
+    <item>
       <title>S1E1: The 50 Shades of Beer Podcast — Series Introduction</title>
       <link>https://www.50shades.net/episodes/s1e1.html</link>
       <guid isPermaLink="true">https://www.50shades.net/episodes/s1e1.html</guid>
       <pubDate>Fri, 15 May 2026 12:05:31 GMT</pubDate>
       <description>An energetic introduction to The 50 Shades of Beer Podcast — a show blending current events, political satire, trending topics, technology, media narratives, and unfiltered opinion. This kickoff episode explains the show's premise, tone, recurring segments, and what listeners can expect each week.</description>
       <content:encoded><![CDATA[An energetic introduction to The 50 Shades of Beer Podcast — a show blending current events, political satire, trending topics, technology, media narratives, and unfiltered opinion. This kickoff episode explains the show's premise, tone, recurring segments, and what listeners can expect each week.]]></content:encoded>
-      <enclosure url="https://www.50shades.net/files/segment1_973faa9144998bf2.mp3" length="10170521" type="audio/mpeg"/>
+      <enclosure url="https://www.50shades.net/episodes/s1e1/segment-01.mp3" length="" type="audio/mpeg"/>
       <itunes:title>S1E1: The 50 Shades of Beer Podcast — Series Introduction</itunes:title>
       <itunes:subtitle>Where headlines breathe and the conversation is always on tap.</itunes:subtitle>
       <itunes:summary>An energetic introduction to The 50 Shades of Beer Podcast — a show blending current events, political satire, trending topics, technology, media narratives, and unfiltered opinion. This kickoff episode explains the show's premise, tone, recurring segments, and what listeners can expect each week.</itunes:summary>
