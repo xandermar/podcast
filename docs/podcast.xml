@@ -6,7 +6,7 @@
     <description>A conversational podcast covering current events, trending topics, opinions, and reviews.</description>
     <language>en-us</language>
     <copyright>©2026 The 50 Shades of Beer Podcast</copyright>
-    <lastBuildDate>Fri, 24 Jul 2026 20:55:24 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jul 2026 23:29:17 GMT</lastBuildDate>
     <generator>XDM Podcast AI</generator>
     <itunes:type>episodic</itunes:type>
     <itunes:author>Big D and G Funkadelic Radio Network</itunes:author>
@@ -51,7 +51,7 @@
       <itunes:episodeType>full</itunes:episodeType>
       <itunes:explicit>no</itunes:explicit>
       <itunes:image href="https://www.50shades.net/images/cover.jpg"/>
-      <podcast:chapters url="" type=""/>
+      <podcast:chapters url="https://www.50shades.net/chapters/s1e2.json" type="application/json+chapters"/>
     </item>
     <item>
       <title>S1E1: The 50 Shades of Beer Podcast — Series Introduction</title>
@@ -71,7 +71,7 @@
       <itunes:episodeType>full</itunes:episodeType>
       <itunes:explicit>no</itunes:explicit>
       <itunes:image href="https://www.50shades.net/images/cover.jpg"/>
-      <podcast:chapters url="https://media.xandist.site/s1e1-chapters.json" type="application/json+chapters"/>
+      <podcast:chapters url="https://www.50shades.net/chapters/s1e1.json" type="application/json+chapters"/>
       <category>Culture</category>
       <category>News Commentary</category>
       <category>Opinion</category>
