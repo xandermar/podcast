@@ -6,7 +6,7 @@
     <description>A conversational podcast covering current events, trending topics, opinions, and reviews.</description>
     <language>en-us</language>
     <copyright>©2026 The 50 Shades of Beer Podcast</copyright>
-    <lastBuildDate>Fri, 24 Jul 2026 15:30:43 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jul 2026 16:41:48 GMT</lastBuildDate>
     <generator>XDM Podcast AI</generator>
     <itunes:type>episodic</itunes:type>
     <itunes:author>Big D and G Funkadelic Radio Network</itunes:author>
@@ -60,18 +60,18 @@
       <pubDate>Fri, 15 May 2026 12:05:31 GMT</pubDate>
       <description>An energetic introduction to The 50 Shades of Beer Podcast — a show blending current events, political satire, trending topics, technology, media narratives, and unfiltered opinion. This kickoff episode explains the show's premise, tone, recurring segments, and what listeners can expect each week.</description>
       <content:encoded><![CDATA[An energetic introduction to The 50 Shades of Beer Podcast — a show blending current events, political satire, trending topics, technology, media narratives, and unfiltered opinion. This kickoff episode explains the show's premise, tone, recurring segments, and what listeners can expect each week.]]></content:encoded>
-      <enclosure url="https://www.50shades.net/episodes/s1e1/segment-01.mp3" length="" type="audio/mpeg"/>
+      <enclosure url="https://media.xandist.site/s1e1.mp3" length="13821645" type="audio/mpeg"/>
       <itunes:title>S1E1: The 50 Shades of Beer Podcast — Series Introduction</itunes:title>
       <itunes:subtitle>Where headlines breathe and the conversation is always on tap.</itunes:subtitle>
       <itunes:summary>An energetic introduction to The 50 Shades of Beer Podcast — a show blending current events, political satire, trending topics, technology, media narratives, and unfiltered opinion. This kickoff episode explains the show's premise, tone, recurring segments, and what listeners can expect each week.</itunes:summary>
       <itunes:author>Big D and G Funkadelic Radio Network</itunes:author>
-      <itunes:duration>10:36</itunes:duration>
+      <itunes:duration>10:35</itunes:duration>
       <itunes:episode>1</itunes:episode>
       <itunes:season>1</itunes:season>
       <itunes:episodeType>full</itunes:episodeType>
       <itunes:explicit>no</itunes:explicit>
       <itunes:image href="https://www.50shades.net/images/cover.jpg"/>
-      <podcast:chapters url="" type=""/>
+      <podcast:chapters url="https://media.xandist.site/s1e1-chapters.json" type="application/json+chapters"/>
       <category>Culture</category>
       <category>News Commentary</category>
       <category>Opinion</category>
