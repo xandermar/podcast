@@ -1,33 +1,17 @@
 {
-  "version": "1.2.0",
-  "title": "S1E2: Iran Conflict, Kristi Noem and DHS, Odds and Ends (Brittany Spears DUI, ChiBears, Lou Holtz)",
-  "author": "The 50 Shades of Beer Podcast",
-  "podcastName": "The 50 Shades of Beer Podcast",
-  "chapters": [
-    {
-      "startTime": 0,
-      "title": "Intro",
-      "img": "https://www.50shades.net/images/cover.jpg"
-    },
-    {
-      "startTime": "00:00",
-      "title": "Iran Conflict — What’s Happening and Why It Matters"
-    },
-    {
-      "startTime": "11:13",
-      "title": "Sit back and relax with our sponsor — the perfect companion for your podcast listening experience."
-    },
-    {
-      "startTime": "12:29",
-      "title": "Kristi Noem and DHS — Political Shake-Up and Policy Implications"
-    },
-    {
-      "startTime": "20:44",
-      "title": "The Wife Remote — Because even the best podcasts deserve a great sponsor. Check out The Wife Remote for the ultimate in convenience and comfort while you listen."
-    },
-    {
-      "startTime": "21:37",
-      "title": "Odds and Ends — Britney Spears DUI, Chicago Bears, and Lou Holtz"
-    }
-  ]
+    "version": "1.2.0",
+    "chapters": [
+        {
+            "startTime": 0,
+            "title": "The Fifty Shades of Beer podcast."
+        },
+        {
+            "startTime": 2.0399999999999983,
+            "title": "The Fifty Shades of Beer podcast."
+        },
+        {
+            "startTime": 602.3,
+            "title": "twenty some odd million dollars or two hundred"
+        }
+    ]
 }

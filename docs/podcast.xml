@@ -6,7 +6,7 @@
     <description>A conversational podcast covering current events, trending topics, opinions, and reviews.</description>
     <language>en-us</language>
     <copyright>©2026 The 50 Shades of Beer Podcast</copyright>
-    <lastBuildDate>Fri, 24 Jul 2026 23:29:59 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 11 Aug 2026 16:32:34 GMT</lastBuildDate>
     <generator>XDM Podcast AI</generator>
     <itunes:type>episodic</itunes:type>
     <itunes:author>Big D and G Funkadelic Radio Network</itunes:author>
@@ -34,18 +34,18 @@
     <podcast:medium>podcast</podcast:medium>
     <podcast:location>Milton, Delaware, United States</podcast:location>
     <item>
-      <title>S1E2: Test Episode</title>
+      <title>S1E2: Iran Conflict, Kristi Noem and DHS, Odds and Ends (Brittany Spears DUI, ChiBears, Lou Holtz)</title>
       <link>https://www.50shades.net/episodes/s1e2.html</link>
       <guid isPermaLink="true">https://www.50shades.net/episodes/s1e2.html</guid>
-      <pubDate>Wed, 27 May 2026 16:32:23 GMT</pubDate>
-      <description>This is a test episode.</description>
-      <content:encoded><![CDATA[This is a test episode.]]></content:encoded>
-      <enclosure url="https://www.50shades.net/episodes/s1e2/segment-01.mp3" length="" type="audio/mpeg"/>
-      <itunes:title>S1E2: Test Episode</itunes:title>
+      <pubDate>Wed, 01 Apr 2026 12:00:00 GMT</pubDate>
+      <description>In this debut episode, we dive into the rapidly escalating Iran conflict and what it could mean for the United States, global energy markets, and the broader Middle East as tensions rise and military operations intensify. We also unpack the political shake-up at the Department of Homeland Security following the removal of Kristi Noem as DHS Secretary and her reassignment to a new security role tied to the administration’s “Shield of the Americas” initiative, along with the internal drama and policy implications surrounding the move. Then we shift gears with some lighter—but still headline-worthy—odds and ends, including the latest buzz around a Britney Spears DUI incident, a quick look at what’s going on with the Chicago Bears, and a nostalgic discussion about legendary football coach Lou Holtz and his long-running influence on the game.</description>
+      <content:encoded><![CDATA[In this debut episode, we dive into the rapidly escalating Iran conflict and what it could mean for the United States, global energy markets, and the broader Middle East as tensions rise and military operations intensify. We also unpack the political shake-up at the Department of Homeland Security following the removal of Kristi Noem as DHS Secretary and her reassignment to a new security role tied to the administration’s “Shield of the Americas” initiative, along with the internal drama and policy implications surrounding the move. Then we shift gears with some lighter—but still headline-worthy—odds and ends, including the latest buzz around a Britney Spears DUI incident, a quick look at what’s going on with the Chicago Bears, and a nostalgic discussion about legendary football coach Lou Holtz and his long-running influence on the game.]]></content:encoded>
+      <enclosure url="https://media.xandist.site/s1e2.mp3" length="11715693" type="audio/mpeg"/>
+      <itunes:title>S1E2: Iran Conflict, Kristi Noem and DHS, Odds and Ends (Brittany Spears DUI, ChiBears, Lou Holtz)</itunes:title>
       <itunes:subtitle></itunes:subtitle>
-      <itunes:summary>This is a test episode.</itunes:summary>
+      <itunes:summary>In this debut episode, we dive into the rapidly escalating Iran conflict and what it could mean for the United States, global energy markets, and the broader Middle East as tensions rise and military operations intensify. We also unpack the political shake-up at the Department of Homeland Security following the removal of Kristi Noem as DHS Secretary and her reassignment to a new security role tied to the administration’s “Shield of the Americas” initiative, along with the internal drama and policy implications surrounding the move. Then we shift gears with some lighter—but still headline-worthy—odds and ends, including the latest buzz around a Britney Spears DUI incident, a quick look at what’s going on with the Chicago Bears, and a nostalgic discussion about legendary football coach Lou Holtz and his long-running influence on the game.</itunes:summary>
       <itunes:author>Big D and G Funkadelic Radio Network</itunes:author>
-      <itunes:duration></itunes:duration>
+      <itunes:duration>12:20</itunes:duration>
       <itunes:episode>2</itunes:episode>
       <itunes:season>1</itunes:season>
       <itunes:episodeType>full</itunes:episodeType>
@@ -57,7 +57,7 @@
       <title>S1E1: The 50 Shades of Beer Podcast — Series Introduction</title>
       <link>https://www.50shades.net/episodes/s1e1.html</link>
       <guid isPermaLink="true">https://www.50shades.net/episodes/s1e1.html</guid>
-      <pubDate>Fri, 15 May 2026 12:05:31 GMT</pubDate>
+      <pubDate>Sun, 01 Mar 2026 12:00:00 GMT</pubDate>
       <description>An energetic introduction to The 50 Shades of Beer Podcast — a show blending current events, political satire, trending topics, technology, media narratives, and unfiltered opinion. This kickoff episode explains the show's premise, tone, recurring segments, and what listeners can expect each week.</description>
       <content:encoded><![CDATA[An energetic introduction to The 50 Shades of Beer Podcast — a show blending current events, political satire, trending topics, technology, media narratives, and unfiltered opinion. This kickoff episode explains the show's premise, tone, recurring segments, and what listeners can expect each week.]]></content:encoded>
       <enclosure url="https://media.xandist.site/s1e1.mp3" length="13821645" type="audio/mpeg"/>
