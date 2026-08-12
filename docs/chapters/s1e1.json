@@ -1,17 +1,9 @@
 {
-  "version": "1.2.0",
-  "title": "S1E1: The 50 Shades of Beer Podcast — Series Introduction",
-  "author": "The 50 Shades of Beer Podcast",
-  "podcastName": "The 50 Shades of Beer Podcast",
-  "chapters": [
-    {
-      "startTime": 0,
-      "title": "Intro",
-      "img": "https://www.50shades.net/images/cover.jpg"
-    },
-    {
-      "startTime": "00:00",
-      "title": "Welcome & Show Premise — Why This Podcast Exists"
-    }
-  ]
+    "version": "1.2.0",
+    "chapters": [
+        {
+            "startTime": 0,
+            "title": "Welcome and Show Premise — Why This Podcast Exists"
+        }
+    ]
 }

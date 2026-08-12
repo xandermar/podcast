@@ -6,7 +6,7 @@
     <description>A conversational podcast covering current events, trending topics, opinions, and reviews.</description>
     <language>en-us</language>
     <copyright>©2026 The 50 Shades of Beer Podcast</copyright>
-    <lastBuildDate>Wed, 12 Aug 2026 19:55:20 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 12 Aug 2026 20:38:57 GMT</lastBuildDate>
     <generator>XDM Podcast AI</generator>
     <itunes:type>episodic</itunes:type>
     <itunes:author>Big D and G Funkadelic Radio Network</itunes:author>
@@ -60,12 +60,12 @@
       <pubDate>Sun, 01 Mar 2026 12:00:00 GMT</pubDate>
       <description>An energetic introduction to The 50 Shades of Beer Podcast — a show blending current events, political satire, trending topics, technology, media narratives, and unfiltered opinion. This kickoff episode explains the show's premise, tone, recurring segments, and what listeners can expect each week.</description>
       <content:encoded><![CDATA[An energetic introduction to The 50 Shades of Beer Podcast — a show blending current events, political satire, trending topics, technology, media narratives, and unfiltered opinion. This kickoff episode explains the show's premise, tone, recurring segments, and what listeners can expect each week.]]></content:encoded>
-      <enclosure url="https://media.xandist.site/s1e1.mp3" length="13821645" type="audio/mpeg"/>
+      <enclosure url="https://media.xandist.site/s1e1.mp3" length="12134919" type="audio/mpeg"/>
       <itunes:title>S1E1: The 50 Shades of Beer Podcast — Series Introduction</itunes:title>
       <itunes:subtitle>Where headlines breathe and the conversation is always on tap.</itunes:subtitle>
       <itunes:summary>An energetic introduction to The 50 Shades of Beer Podcast — a show blending current events, political satire, trending topics, technology, media narratives, and unfiltered opinion. This kickoff episode explains the show's premise, tone, recurring segments, and what listeners can expect each week.</itunes:summary>
       <itunes:author>Big D and G Funkadelic Radio Network</itunes:author>
-      <itunes:duration>10:35</itunes:duration>
+      <itunes:duration>8:13</itunes:duration>
       <itunes:episode>1</itunes:episode>
       <itunes:season>1</itunes:season>
       <itunes:episodeType>full</itunes:episodeType>
