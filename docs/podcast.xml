@@ -6,7 +6,7 @@
     <description>A conversational podcast covering current events, trending topics, opinions, and reviews.</description>
     <language>en-us</language>
     <copyright>©2026 The 50 Shades of Beer Podcast</copyright>
-    <lastBuildDate>Thu, 13 Aug 2026 18:32:32 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 13 Aug 2026 19:09:54 GMT</lastBuildDate>
     <generator>XDM Podcast AI</generator>
     <itunes:type>episodic</itunes:type>
     <itunes:author>Big D and G Funkadelic Radio Network</itunes:author>
@@ -64,18 +64,18 @@
       <pubDate>Wed, 08 Apr 2026 12:00:00 GMT</pubDate>
       <description>Artemis 2, Bath Houses and Odds and Ends (Things Men Shouldn’t Do, Dem War Meltdown, Overboard Bahamas)</description>
       <content:encoded><![CDATA[Artemis 2, Bath Houses and Odds and Ends (Things Men Shouldn’t Do, Dem War Meltdown, Overboard Bahamas)]]></content:encoded>
-      <enclosure url="https://www.50shades.net/episodes/s1e5/segment-01.mp3" length="" type="audio/mpeg"/>
+      <enclosure url="https://media.xandist.site/s1e5.mp3" length="71335770" type="audio/mpeg"/>
       <itunes:title>S1E5: Artemis 2, Bath Houses and Odds and Ends (Things Men Shouldn’t Do, Dem War Meltdown, Overboard Bahamas)</itunes:title>
       <itunes:subtitle></itunes:subtitle>
       <itunes:summary>Artemis 2, Bath Houses and Odds and Ends (Things Men Shouldn’t Do, Dem War Meltdown, Overboard Bahamas)</itunes:summary>
       <itunes:author>Big D and G Funkadelic Radio Network</itunes:author>
-      <itunes:duration></itunes:duration>
+      <itunes:duration>55:03</itunes:duration>
       <itunes:episode>5</itunes:episode>
       <itunes:season>1</itunes:season>
       <itunes:episodeType>full</itunes:episodeType>
       <itunes:explicit>no</itunes:explicit>
       <itunes:image href="https://www.50shades.net/images/cover.jpg"/>
-      <podcast:chapters url="" type=""/>
+      <podcast:chapters url="https://www.50shades.net/chapters/s1e5.json" type="application/json+chapters"/>
     </item>
     <item>
       <title>S1E4: Straight of Hormuz; Tiger Woods; Odds and Ends (Things Men Shouldn’t Do, No Kings Protest In UK, Six Ways To Health/Happiness and Easter Eggs at White House)</title>
