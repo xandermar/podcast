@@ -6,7 +6,7 @@
     <description>A conversational podcast covering current events, trending topics, opinions, and reviews.</description>
     <language>en-us</language>
     <copyright>©2026 The 50 Shades of Beer Podcast</copyright>
-    <lastBuildDate>Thu, 13 Aug 2026 18:01:53 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 13 Aug 2026 18:32:32 GMT</lastBuildDate>
     <generator>XDM Podcast AI</generator>
     <itunes:type>episodic</itunes:type>
     <itunes:author>Big D and G Funkadelic Radio Network</itunes:author>
@@ -84,18 +84,18 @@
       <pubDate>Thu, 02 Apr 2026 12:00:00 GMT</pubDate>
       <description>In this episode, we cover a wide-ranging mix of current events, culture, sports and everyday life. We take a look at the Strait of Hormuz and why it continues to matter on the world stage, discuss the latest surrounding Tiger Woods, and wrap up with a collection of odds and ends. Topics include things men probably shouldn’t do, the “No Kings” protest in the UK, six practical ways to improve your health and happiness, and the Easter eggs making news at the White House. It’s a little politics, a little sports, a little common sense—and plenty to talk about.</description>
       <content:encoded><![CDATA[In this episode, we cover a wide-ranging mix of current events, culture, sports and everyday life. We take a look at the Strait of Hormuz and why it continues to matter on the world stage, discuss the latest surrounding Tiger Woods, and wrap up with a collection of odds and ends. Topics include things men probably shouldn’t do, the “No Kings” protest in the UK, six practical ways to improve your health and happiness, and the Easter eggs making news at the White House. It’s a little politics, a little sports, a little common sense—and plenty to talk about.]]></content:encoded>
-      <enclosure url="https://www.50shades.net/episodes/s1e4/segment-01.mp3" length="" type="audio/mpeg"/>
+      <enclosure url="https://media.xandist.site/s1e4.mp3" length="55850000" type="audio/mpeg"/>
       <itunes:title>S1E4: Straight of Hormuz; Tiger Woods; Odds and Ends (Things Men Shouldn’t Do, No Kings Protest In UK, Six Ways To Health/Happiness and Easter Eggs at White House)</itunes:title>
       <itunes:subtitle></itunes:subtitle>
       <itunes:summary>In this episode, we cover a wide-ranging mix of current events, culture, sports and everyday life. We take a look at the Strait of Hormuz and why it continues to matter on the world stage, discuss the latest surrounding Tiger Woods, and wrap up with a collection of odds and ends. Topics include things men probably shouldn’t do, the “No Kings” protest in the UK, six practical ways to improve your health and happiness, and the Easter eggs making news at the White House. It’s a little politics, a little sports, a little common sense—and plenty to talk about.</itunes:summary>
       <itunes:author>Big D and G Funkadelic Radio Network</itunes:author>
-      <itunes:duration></itunes:duration>
+      <itunes:duration>45:55</itunes:duration>
       <itunes:episode>4</itunes:episode>
       <itunes:season>1</itunes:season>
       <itunes:episodeType>full</itunes:episodeType>
       <itunes:explicit>no</itunes:explicit>
       <itunes:image href="https://www.50shades.net/images/cover.jpg"/>
-      <podcast:chapters url="" type=""/>
+      <podcast:chapters url="https://www.50shades.net/chapters/s1e4.json" type="application/json+chapters"/>
       <category>no kings</category>
       <category>straight of hormuz</category>
       <category>tiger woods</category>
