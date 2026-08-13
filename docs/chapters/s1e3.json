@@ -3,7 +3,7 @@
     "chapters": [
         {
             "startTime": 0,
-            "title": "seg01"
+            "title": "TSA Gets ICE Help"
         },
         {
             "startTime": 868,
@@ -11,7 +11,7 @@
         },
         {
             "startTime": 939,
-            "title": "seg02"
+            "title": "SCOTUS Mail-In Ballots"
         },
         {
             "startTime": 1580,
@@ -19,7 +19,7 @@
         },
         {
             "startTime": 1645,
-            "title": "seg03"
+            "title": "Odds and Ends (Deployment, Mullen and Delta)"
         }
     ]
 }

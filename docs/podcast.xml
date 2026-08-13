@@ -6,7 +6,7 @@
     <description>A conversational podcast covering current events, trending topics, opinions, and reviews.</description>
     <language>en-us</language>
     <copyright>©2026 The 50 Shades of Beer Podcast</copyright>
-    <lastBuildDate>Thu, 13 Aug 2026 21:38:45 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 13 Aug 2026 21:46:13 GMT</lastBuildDate>
     <generator>XDM Podcast AI</generator>
     <itunes:type>episodic</itunes:type>
     <itunes:author>Big D and G Funkadelic Radio Network</itunes:author>
@@ -34,71 +34,51 @@
     <podcast:medium>podcast</podcast:medium>
     <podcast:location>Milton, Delaware, United States</podcast:location>
     <item>
-      <title>S1E6: Buh-Bye From Seattle Mayor, Pilots and Bread, Odds and Ends (Things Men Should Never Do, Hormuz Updates, Wackos in OK)</title>
-      <link>https://www.50shades.net/episodes/s1e6.html</link>
-      <guid isPermaLink="true">https://www.50shades.net/episodes/s1e6.html</guid>
-      <pubDate>Tue, 05 May 2026 12:00:00 GMT</pubDate>
-      <description>In this episode, we cover a mixed bag of headlines and commentary—from Seattle’s mayoral politics and the latest aviation stories to the ever-important subject of bread. Then it’s on to Odds and Ends, including things men should never do, the latest developments surrounding the Strait of Hormuz, and some truly bizarre behavior coming out of Oklahoma. Politics, world events, questionable decisions, and plenty of commentary along the way.</description>
-      <content:encoded><![CDATA[In this episode, we cover a mixed bag of headlines and commentary—from Seattle’s mayoral politics and the latest aviation stories to the ever-important subject of bread. Then it’s on to Odds and Ends, including things men should never do, the latest developments surrounding the Strait of Hormuz, and some truly bizarre behavior coming out of Oklahoma. Politics, world events, questionable decisions, and plenty of commentary along the way.]]></content:encoded>
-      <enclosure url="https://media.xandist.site/s1e6.mp3" length="81254322" type="audio/mpeg"/>
-      <itunes:title>S1E6: Buh-Bye From Seattle Mayor, Pilots and Bread, Odds and Ends (Things Men Should Never Do, Hormuz Updates, Wackos in OK)</itunes:title>
-      <itunes:subtitle></itunes:subtitle>
-      <itunes:summary>In this episode, we cover a mixed bag of headlines and commentary—from Seattle’s mayoral politics and the latest aviation stories to the ever-important subject of bread. Then it’s on to Odds and Ends, including things men should never do, the latest developments surrounding the Strait of Hormuz, and some truly bizarre behavior coming out of Oklahoma. Politics, world events, questionable decisions, and plenty of commentary along the way.</itunes:summary>
+      <title>S1E1: The 50 Shades of Beer Podcast — Series Introduction</title>
+      <link>https://www.50shades.net/episodes/s1e1.html</link>
+      <guid isPermaLink="true">https://www.50shades.net/episodes/s1e1.html</guid>
+      <pubDate>Wed, 25 Feb 2026 12:00:00 GMT</pubDate>
+      <description>An energetic introduction to The 50 Shades of Beer Podcast — a show blending current events, political satire, trending topics, technology, media narratives, and unfiltered opinion. This kickoff episode explains the show's premise, tone, recurring segments, and what listeners can expect each week.</description>
+      <content:encoded><![CDATA[An energetic introduction to The 50 Shades of Beer Podcast — a show blending current events, political satire, trending topics, technology, media narratives, and unfiltered opinion. This kickoff episode explains the show's premise, tone, recurring segments, and what listeners can expect each week.]]></content:encoded>
+      <enclosure url="https://media.xandist.site/s1e1.mp3" length="12134919" type="audio/mpeg"/>
+      <itunes:title>S1E1: The 50 Shades of Beer Podcast — Series Introduction</itunes:title>
+      <itunes:subtitle>Where headlines breathe and the conversation is always on tap.</itunes:subtitle>
+      <itunes:summary>An energetic introduction to The 50 Shades of Beer Podcast — a show blending current events, political satire, trending topics, technology, media narratives, and unfiltered opinion. This kickoff episode explains the show's premise, tone, recurring segments, and what listeners can expect each week.</itunes:summary>
       <itunes:author>Big D and G Funkadelic Radio Network</itunes:author>
-      <itunes:duration>1:07:21</itunes:duration>
-      <itunes:episode>6</itunes:episode>
+      <itunes:duration>8:13</itunes:duration>
+      <itunes:episode>1</itunes:episode>
       <itunes:season>1</itunes:season>
       <itunes:episodeType>full</itunes:episodeType>
       <itunes:explicit>no</itunes:explicit>
       <itunes:image href="https://www.50shades.net/images/cover.jpg"/>
-      <podcast:chapters url="https://www.50shades.net/chapters/s1e6.json" type="application/json+chapters"/>
-      <category>oklahoma</category>
-      <category>pilots</category>
-      <category>seattle</category>
-      <category>stright of hormuz</category>
+      <podcast:chapters url="https://www.50shades.net/chapters/s1e1.json" type="application/json+chapters"/>
+      <category>Culture</category>
+      <category>News Commentary</category>
+      <category>Opinion</category>
+      <category>Podcast Launch</category>
+      <category>Politics</category>
+      <category>Satire</category>
+      <category>Trending Topics</category>
     </item>
     <item>
-      <title>S1E5: Artemis 2, Bath Houses and Odds and Ends (Things Men Shouldn’t Do, Dem War Meltdown, Overboard Bahamas)</title>
-      <link>https://www.50shades.net/episodes/s1e5.html</link>
-      <guid isPermaLink="true">https://www.50shades.net/episodes/s1e5.html</guid>
-      <pubDate>Wed, 08 Apr 2026 12:00:00 GMT</pubDate>
-      <description>Artemis 2, Bath Houses and Odds and Ends (Things Men Shouldn’t Do, Dem War Meltdown, Overboard Bahamas)</description>
-      <content:encoded><![CDATA[Artemis 2, Bath Houses and Odds and Ends (Things Men Shouldn’t Do, Dem War Meltdown, Overboard Bahamas)]]></content:encoded>
-      <enclosure url="https://media.xandist.site/s1e5.mp3" length="71834874" type="audio/mpeg"/>
-      <itunes:title>S1E5: Artemis 2, Bath Houses and Odds and Ends (Things Men Shouldn’t Do, Dem War Meltdown, Overboard Bahamas)</itunes:title>
+      <title>S1E2: Iran Conflict, Kristi Noem and DHS, Odds and Ends (Brittany Spears DUI, ChiBears, Lou Holtz)</title>
+      <link>https://www.50shades.net/episodes/s1e2.html</link>
+      <guid isPermaLink="true">https://www.50shades.net/episodes/s1e2.html</guid>
+      <pubDate>Fri, 13 Mar 2026 12:00:00 GMT</pubDate>
+      <description>In this debut episode, we dive into the rapidly escalating Iran conflict and what it could mean for the United States, global energy markets, and the broader Middle East as tensions rise and military operations intensify. We also unpack the political shake-up at the Department of Homeland Security following the removal of Kristi Noem as DHS Secretary and her reassignment to a new security role tied to the administration’s “Shield of the Americas” initiative, along with the internal drama and policy implications surrounding the move. Then we shift gears with some lighter—but still headline-worthy—odds and ends, including the latest buzz around a Britney Spears DUI incident, a quick look at what’s going on with the Chicago Bears, and a nostalgic discussion about legendary football coach Lou Holtz and his long-running influence on the game.</description>
+      <content:encoded><![CDATA[In this debut episode, we dive into the rapidly escalating Iran conflict and what it could mean for the United States, global energy markets, and the broader Middle East as tensions rise and military operations intensify. We also unpack the political shake-up at the Department of Homeland Security following the removal of Kristi Noem as DHS Secretary and her reassignment to a new security role tied to the administration’s “Shield of the Americas” initiative, along with the internal drama and policy implications surrounding the move. Then we shift gears with some lighter—but still headline-worthy—odds and ends, including the latest buzz around a Britney Spears DUI incident, a quick look at what’s going on with the Chicago Bears, and a nostalgic discussion about legendary football coach Lou Holtz and his long-running influence on the game.]]></content:encoded>
+      <enclosure url="https://media.xandist.site/s1e2.mp3" length="35799896" type="audio/mpeg"/>
+      <itunes:title>S1E2: Iran Conflict, Kristi Noem and DHS, Odds and Ends (Brittany Spears DUI, ChiBears, Lou Holtz)</itunes:title>
       <itunes:subtitle></itunes:subtitle>
-      <itunes:summary>Artemis 2, Bath Houses and Odds and Ends (Things Men Shouldn’t Do, Dem War Meltdown, Overboard Bahamas)</itunes:summary>
+      <itunes:summary>In this debut episode, we dive into the rapidly escalating Iran conflict and what it could mean for the United States, global energy markets, and the broader Middle East as tensions rise and military operations intensify. We also unpack the political shake-up at the Department of Homeland Security following the removal of Kristi Noem as DHS Secretary and her reassignment to a new security role tied to the administration’s “Shield of the Americas” initiative, along with the internal drama and policy implications surrounding the move. Then we shift gears with some lighter—but still headline-worthy—odds and ends, including the latest buzz around a Britney Spears DUI incident, a quick look at what’s going on with the Chicago Bears, and a nostalgic discussion about legendary football coach Lou Holtz and his long-running influence on the game.</itunes:summary>
       <itunes:author>Big D and G Funkadelic Radio Network</itunes:author>
-      <itunes:duration>55:03</itunes:duration>
-      <itunes:episode>5</itunes:episode>
+      <itunes:duration>39:49</itunes:duration>
+      <itunes:episode>2</itunes:episode>
       <itunes:season>1</itunes:season>
       <itunes:episodeType>full</itunes:episodeType>
       <itunes:explicit>no</itunes:explicit>
       <itunes:image href="https://www.50shades.net/images/cover.jpg"/>
-      <podcast:chapters url="https://www.50shades.net/chapters/s1e5.json" type="application/json+chapters"/>
-    </item>
-    <item>
-      <title>S1E4: Straight of Hormuz; Tiger Woods; Odds and Ends (Things Men Shouldn’t Do, No Kings Protest In UK, Six Ways To Health/Happiness and Easter Eggs at White House)</title>
-      <link>https://www.50shades.net/episodes/s1e4.html</link>
-      <guid isPermaLink="true">https://www.50shades.net/episodes/s1e4.html</guid>
-      <pubDate>Thu, 02 Apr 2026 12:00:00 GMT</pubDate>
-      <description>In this episode, we cover a wide-ranging mix of current events, culture, sports and everyday life. We take a look at the Strait of Hormuz and why it continues to matter on the world stage, discuss the latest surrounding Tiger Woods, and wrap up with a collection of odds and ends. Topics include things men probably shouldn’t do, the “No Kings” protest in the UK, six practical ways to improve your health and happiness, and the Easter eggs making news at the White House. It’s a little politics, a little sports, a little common sense—and plenty to talk about.</description>
-      <content:encoded><![CDATA[In this episode, we cover a wide-ranging mix of current events, culture, sports and everyday life. We take a look at the Strait of Hormuz and why it continues to matter on the world stage, discuss the latest surrounding Tiger Woods, and wrap up with a collection of odds and ends. Topics include things men probably shouldn’t do, the “No Kings” protest in the UK, six practical ways to improve your health and happiness, and the Easter eggs making news at the White House. It’s a little politics, a little sports, a little common sense—and plenty to talk about.]]></content:encoded>
-      <enclosure url="https://media.xandist.site/s1e4.mp3" length="55850000" type="audio/mpeg"/>
-      <itunes:title>S1E4: Straight of Hormuz; Tiger Woods; Odds and Ends (Things Men Shouldn’t Do, No Kings Protest In UK, Six Ways To Health/Happiness and Easter Eggs at White House)</itunes:title>
-      <itunes:subtitle></itunes:subtitle>
-      <itunes:summary>In this episode, we cover a wide-ranging mix of current events, culture, sports and everyday life. We take a look at the Strait of Hormuz and why it continues to matter on the world stage, discuss the latest surrounding Tiger Woods, and wrap up with a collection of odds and ends. Topics include things men probably shouldn’t do, the “No Kings” protest in the UK, six practical ways to improve your health and happiness, and the Easter eggs making news at the White House. It’s a little politics, a little sports, a little common sense—and plenty to talk about.</itunes:summary>
-      <itunes:author>Big D and G Funkadelic Radio Network</itunes:author>
-      <itunes:duration>45:55</itunes:duration>
-      <itunes:episode>4</itunes:episode>
-      <itunes:season>1</itunes:season>
-      <itunes:episodeType>full</itunes:episodeType>
-      <itunes:explicit>no</itunes:explicit>
-      <itunes:image href="https://www.50shades.net/images/cover.jpg"/>
-      <podcast:chapters url="https://www.50shades.net/chapters/s1e4.json" type="application/json+chapters"/>
-      <category>no kings</category>
-      <category>straight of hormuz</category>
-      <category>tiger woods</category>
+      <podcast:chapters url="https://www.50shades.net/chapters/s1e2.json" type="application/json+chapters"/>
     </item>
     <item>
       <title>S1E3: TSA Gets ICE Help; SCOTUS Mail-In Ballots; Odds and Ends (Deployment, Mullen and Delta)</title>
@@ -131,51 +111,71 @@ A straightforward rundown of what happened, why it matters, and what to watch ne
       <category>tsa</category>
     </item>
     <item>
-      <title>S1E2: Iran Conflict, Kristi Noem and DHS, Odds and Ends (Brittany Spears DUI, ChiBears, Lou Holtz)</title>
-      <link>https://www.50shades.net/episodes/s1e2.html</link>
-      <guid isPermaLink="true">https://www.50shades.net/episodes/s1e2.html</guid>
-      <pubDate>Fri, 13 Mar 2026 12:00:00 GMT</pubDate>
-      <description>In this debut episode, we dive into the rapidly escalating Iran conflict and what it could mean for the United States, global energy markets, and the broader Middle East as tensions rise and military operations intensify. We also unpack the political shake-up at the Department of Homeland Security following the removal of Kristi Noem as DHS Secretary and her reassignment to a new security role tied to the administration’s “Shield of the Americas” initiative, along with the internal drama and policy implications surrounding the move. Then we shift gears with some lighter—but still headline-worthy—odds and ends, including the latest buzz around a Britney Spears DUI incident, a quick look at what’s going on with the Chicago Bears, and a nostalgic discussion about legendary football coach Lou Holtz and his long-running influence on the game.</description>
-      <content:encoded><![CDATA[In this debut episode, we dive into the rapidly escalating Iran conflict and what it could mean for the United States, global energy markets, and the broader Middle East as tensions rise and military operations intensify. We also unpack the political shake-up at the Department of Homeland Security following the removal of Kristi Noem as DHS Secretary and her reassignment to a new security role tied to the administration’s “Shield of the Americas” initiative, along with the internal drama and policy implications surrounding the move. Then we shift gears with some lighter—but still headline-worthy—odds and ends, including the latest buzz around a Britney Spears DUI incident, a quick look at what’s going on with the Chicago Bears, and a nostalgic discussion about legendary football coach Lou Holtz and his long-running influence on the game.]]></content:encoded>
-      <enclosure url="https://media.xandist.site/s1e2.mp3" length="35799896" type="audio/mpeg"/>
-      <itunes:title>S1E2: Iran Conflict, Kristi Noem and DHS, Odds and Ends (Brittany Spears DUI, ChiBears, Lou Holtz)</itunes:title>
+      <title>S1E4: Straight of Hormuz; Tiger Woods; Odds and Ends (Things Men Shouldn’t Do, No Kings Protest In UK, Six Ways To Health/Happiness and Easter Eggs at White House)</title>
+      <link>https://www.50shades.net/episodes/s1e4.html</link>
+      <guid isPermaLink="true">https://www.50shades.net/episodes/s1e4.html</guid>
+      <pubDate>Thu, 02 Apr 2026 12:00:00 GMT</pubDate>
+      <description>In this episode, we cover a wide-ranging mix of current events, culture, sports and everyday life. We take a look at the Strait of Hormuz and why it continues to matter on the world stage, discuss the latest surrounding Tiger Woods, and wrap up with a collection of odds and ends. Topics include things men probably shouldn’t do, the “No Kings” protest in the UK, six practical ways to improve your health and happiness, and the Easter eggs making news at the White House. It’s a little politics, a little sports, a little common sense—and plenty to talk about.</description>
+      <content:encoded><![CDATA[In this episode, we cover a wide-ranging mix of current events, culture, sports and everyday life. We take a look at the Strait of Hormuz and why it continues to matter on the world stage, discuss the latest surrounding Tiger Woods, and wrap up with a collection of odds and ends. Topics include things men probably shouldn’t do, the “No Kings” protest in the UK, six practical ways to improve your health and happiness, and the Easter eggs making news at the White House. It’s a little politics, a little sports, a little common sense—and plenty to talk about.]]></content:encoded>
+      <enclosure url="https://media.xandist.site/s1e4.mp3" length="55850000" type="audio/mpeg"/>
+      <itunes:title>S1E4: Straight of Hormuz; Tiger Woods; Odds and Ends (Things Men Shouldn’t Do, No Kings Protest In UK, Six Ways To Health/Happiness and Easter Eggs at White House)</itunes:title>
       <itunes:subtitle></itunes:subtitle>
-      <itunes:summary>In this debut episode, we dive into the rapidly escalating Iran conflict and what it could mean for the United States, global energy markets, and the broader Middle East as tensions rise and military operations intensify. We also unpack the political shake-up at the Department of Homeland Security following the removal of Kristi Noem as DHS Secretary and her reassignment to a new security role tied to the administration’s “Shield of the Americas” initiative, along with the internal drama and policy implications surrounding the move. Then we shift gears with some lighter—but still headline-worthy—odds and ends, including the latest buzz around a Britney Spears DUI incident, a quick look at what’s going on with the Chicago Bears, and a nostalgic discussion about legendary football coach Lou Holtz and his long-running influence on the game.</itunes:summary>
+      <itunes:summary>In this episode, we cover a wide-ranging mix of current events, culture, sports and everyday life. We take a look at the Strait of Hormuz and why it continues to matter on the world stage, discuss the latest surrounding Tiger Woods, and wrap up with a collection of odds and ends. Topics include things men probably shouldn’t do, the “No Kings” protest in the UK, six practical ways to improve your health and happiness, and the Easter eggs making news at the White House. It’s a little politics, a little sports, a little common sense—and plenty to talk about.</itunes:summary>
       <itunes:author>Big D and G Funkadelic Radio Network</itunes:author>
-      <itunes:duration>39:49</itunes:duration>
-      <itunes:episode>2</itunes:episode>
+      <itunes:duration>45:55</itunes:duration>
+      <itunes:episode>4</itunes:episode>
       <itunes:season>1</itunes:season>
       <itunes:episodeType>full</itunes:episodeType>
       <itunes:explicit>no</itunes:explicit>
       <itunes:image href="https://www.50shades.net/images/cover.jpg"/>
-      <podcast:chapters url="https://www.50shades.net/chapters/s1e2.json" type="application/json+chapters"/>
+      <podcast:chapters url="https://www.50shades.net/chapters/s1e4.json" type="application/json+chapters"/>
+      <category>no kings</category>
+      <category>straight of hormuz</category>
+      <category>tiger woods</category>
     </item>
     <item>
-      <title>S1E1: The 50 Shades of Beer Podcast — Series Introduction</title>
-      <link>https://www.50shades.net/episodes/s1e1.html</link>
-      <guid isPermaLink="true">https://www.50shades.net/episodes/s1e1.html</guid>
-      <pubDate>Wed, 25 Feb 2026 12:00:00 GMT</pubDate>
-      <description>An energetic introduction to The 50 Shades of Beer Podcast — a show blending current events, political satire, trending topics, technology, media narratives, and unfiltered opinion. This kickoff episode explains the show's premise, tone, recurring segments, and what listeners can expect each week.</description>
-      <content:encoded><![CDATA[An energetic introduction to The 50 Shades of Beer Podcast — a show blending current events, political satire, trending topics, technology, media narratives, and unfiltered opinion. This kickoff episode explains the show's premise, tone, recurring segments, and what listeners can expect each week.]]></content:encoded>
-      <enclosure url="https://media.xandist.site/s1e1.mp3" length="12134919" type="audio/mpeg"/>
-      <itunes:title>S1E1: The 50 Shades of Beer Podcast — Series Introduction</itunes:title>
-      <itunes:subtitle>Where headlines breathe and the conversation is always on tap.</itunes:subtitle>
-      <itunes:summary>An energetic introduction to The 50 Shades of Beer Podcast — a show blending current events, political satire, trending topics, technology, media narratives, and unfiltered opinion. This kickoff episode explains the show's premise, tone, recurring segments, and what listeners can expect each week.</itunes:summary>
+      <title>S1E5: Artemis 2, Bath Houses and Odds and Ends (Things Men Shouldn’t Do, Dem War Meltdown, Overboard Bahamas)</title>
+      <link>https://www.50shades.net/episodes/s1e5.html</link>
+      <guid isPermaLink="true">https://www.50shades.net/episodes/s1e5.html</guid>
+      <pubDate>Wed, 08 Apr 2026 12:00:00 GMT</pubDate>
+      <description>Artemis 2, Bath Houses and Odds and Ends (Things Men Shouldn’t Do, Dem War Meltdown, Overboard Bahamas)</description>
+      <content:encoded><![CDATA[Artemis 2, Bath Houses and Odds and Ends (Things Men Shouldn’t Do, Dem War Meltdown, Overboard Bahamas)]]></content:encoded>
+      <enclosure url="https://media.xandist.site/s1e5.mp3" length="71834874" type="audio/mpeg"/>
+      <itunes:title>S1E5: Artemis 2, Bath Houses and Odds and Ends (Things Men Shouldn’t Do, Dem War Meltdown, Overboard Bahamas)</itunes:title>
+      <itunes:subtitle></itunes:subtitle>
+      <itunes:summary>Artemis 2, Bath Houses and Odds and Ends (Things Men Shouldn’t Do, Dem War Meltdown, Overboard Bahamas)</itunes:summary>
       <itunes:author>Big D and G Funkadelic Radio Network</itunes:author>
-      <itunes:duration>8:13</itunes:duration>
-      <itunes:episode>1</itunes:episode>
+      <itunes:duration>55:03</itunes:duration>
+      <itunes:episode>5</itunes:episode>
       <itunes:season>1</itunes:season>
       <itunes:episodeType>full</itunes:episodeType>
       <itunes:explicit>no</itunes:explicit>
       <itunes:image href="https://www.50shades.net/images/cover.jpg"/>
-      <podcast:chapters url="https://www.50shades.net/chapters/s1e1.json" type="application/json+chapters"/>
-      <category>Culture</category>
-      <category>News Commentary</category>
-      <category>Opinion</category>
-      <category>Podcast Launch</category>
-      <category>Politics</category>
-      <category>Satire</category>
-      <category>Trending Topics</category>
+      <podcast:chapters url="https://www.50shades.net/chapters/s1e5.json" type="application/json+chapters"/>
+    </item>
+    <item>
+      <title>S1E6: Buh-Bye From Seattle Mayor, Pilots and Bread, Odds and Ends (Things Men Should Never Do, Hormuz Updates, Wackos in OK)</title>
+      <link>https://www.50shades.net/episodes/s1e6.html</link>
+      <guid isPermaLink="true">https://www.50shades.net/episodes/s1e6.html</guid>
+      <pubDate>Tue, 05 May 2026 12:00:00 GMT</pubDate>
+      <description>In this episode, we cover a mixed bag of headlines and commentary—from Seattle’s mayoral politics and the latest aviation stories to the ever-important subject of bread. Then it’s on to Odds and Ends, including things men should never do, the latest developments surrounding the Strait of Hormuz, and some truly bizarre behavior coming out of Oklahoma. Politics, world events, questionable decisions, and plenty of commentary along the way.</description>
+      <content:encoded><![CDATA[In this episode, we cover a mixed bag of headlines and commentary—from Seattle’s mayoral politics and the latest aviation stories to the ever-important subject of bread. Then it’s on to Odds and Ends, including things men should never do, the latest developments surrounding the Strait of Hormuz, and some truly bizarre behavior coming out of Oklahoma. Politics, world events, questionable decisions, and plenty of commentary along the way.]]></content:encoded>
+      <enclosure url="https://media.xandist.site/s1e6.mp3" length="81254322" type="audio/mpeg"/>
+      <itunes:title>S1E6: Buh-Bye From Seattle Mayor, Pilots and Bread, Odds and Ends (Things Men Should Never Do, Hormuz Updates, Wackos in OK)</itunes:title>
+      <itunes:subtitle></itunes:subtitle>
+      <itunes:summary>In this episode, we cover a mixed bag of headlines and commentary—from Seattle’s mayoral politics and the latest aviation stories to the ever-important subject of bread. Then it’s on to Odds and Ends, including things men should never do, the latest developments surrounding the Strait of Hormuz, and some truly bizarre behavior coming out of Oklahoma. Politics, world events, questionable decisions, and plenty of commentary along the way.</itunes:summary>
+      <itunes:author>Big D and G Funkadelic Radio Network</itunes:author>
+      <itunes:duration>1:07:21</itunes:duration>
+      <itunes:episode>6</itunes:episode>
+      <itunes:season>1</itunes:season>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:image href="https://www.50shades.net/images/cover.jpg"/>
+      <podcast:chapters url="https://www.50shades.net/chapters/s1e6.json" type="application/json+chapters"/>
+      <category>oklahoma</category>
+      <category>pilots</category>
+      <category>seattle</category>
+      <category>stright of hormuz</category>
     </item>
   </channel>
 </rss>
