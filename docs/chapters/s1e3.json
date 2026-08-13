@@ -1,0 +1,25 @@
+{
+    "version": "1.2.0",
+    "chapters": [
+        {
+            "startTime": 0,
+            "title": "seg01"
+        },
+        {
+            "startTime": 868,
+            "title": "comm1"
+        },
+        {
+            "startTime": 939,
+            "title": "seg02"
+        },
+        {
+            "startTime": 1580,
+            "title": "comm2"
+        },
+        {
+            "startTime": 1645,
+            "title": "seg03"
+        }
+    ]
+}
