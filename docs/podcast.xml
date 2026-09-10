@@ -6,7 +6,7 @@
     <description>A conversational podcast covering current events, trending topics, opinions, and reviews.</description>
     <language>en-us</language>
     <copyright>©2026 The 50 Shades of Beer Podcast</copyright>
-    <lastBuildDate>Sat, 15 Aug 2026 19:48:11 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 10 Sep 2026 03:36:32 GMT</lastBuildDate>
     <generator>XDM Podcast AI</generator>
     <itunes:type>episodic</itunes:type>
     <itunes:author>Big D and G Funkadelic Radio Network</itunes:author>
@@ -176,6 +176,30 @@ A straightforward rundown of what happened, why it matters, and what to watch ne
       <category>pilots</category>
       <category>seattle</category>
       <category>stright of hormuz</category>
+    </item>
+    <item>
+      <title>S2E1: Lindsey Clancy Trial, What is Labor Day?, Odds and Ends (Things Men Should Never Do, Amazon Crash, Dumb Politics)</title>
+      <link>https://www.50shades.net/episodes/s2e1.html</link>
+      <guid isPermaLink="true">https://www.50shades.net/episodes/s2e1.html</guid>
+      <pubDate>Thu, 10 Sep 2026 12:00:00 GMT</pubDate>
+      <description>In this episode, we break down the Lindsey Clancy trial and the difficult questions surrounding the case, explore the history of Labor Day and why it became a federal holiday, then move into Odds and Ends with a rundown of things men should never do, the latest on the Amazon cargo plane crash, and some of the dumbest and funniest moments in politics. It’s a mix of true crime, history, current events, humor, and plenty of opinion packed into one episode.</description>
+      <content:encoded><![CDATA[In this episode, we break down the Lindsey Clancy trial and the difficult questions surrounding the case, explore the history of Labor Day and why it became a federal holiday, then move into Odds and Ends with a rundown of things men should never do, the latest on the Amazon cargo plane crash, and some of the dumbest and funniest moments in politics. It’s a mix of true crime, history, current events, humor, and plenty of opinion packed into one episode.]]></content:encoded>
+      <enclosure url="https://media.xandist.site/s2e1.mp3" length="75905290" type="audio/mpeg"/>
+      <itunes:title>S2E1: Lindsey Clancy Trial, What is Labor Day?, Odds and Ends (Things Men Should Never Do, Amazon Crash, Dumb Politics)</itunes:title>
+      <itunes:subtitle></itunes:subtitle>
+      <itunes:summary>In this episode, we break down the Lindsey Clancy trial and the difficult questions surrounding the case, explore the history of Labor Day and why it became a federal holiday, then move into Odds and Ends with a rundown of things men should never do, the latest on the Amazon cargo plane crash, and some of the dumbest and funniest moments in politics. It’s a mix of true crime, history, current events, humor, and plenty of opinion packed into one episode.</itunes:summary>
+      <itunes:author>Big D and G Funkadelic Radio Network</itunes:author>
+      <itunes:duration>1:15:18</itunes:duration>
+      <itunes:episode>1</itunes:episode>
+      <itunes:season>2</itunes:season>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:image href="https://www.50shades.net/images/cover.jpg"/>
+      <podcast:chapters url="https://www.50shades.net/chapters/s2e1.json" type="application/json+chapters"/>
+      <category>amazon crash</category>
+      <category>clancy</category>
+      <category>dumb politics</category>
+      <category>labor day</category>
     </item>
   </channel>
 </rss>
